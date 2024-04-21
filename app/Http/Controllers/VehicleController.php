@@ -26,17 +26,23 @@ class VehicleController extends Controller
         $request->validate([
             'brand' => ['required', 'string', 'max:255'],
             'model' => ['nullable', 'string', 'max:255'],
-            // 'plate_number' => ['required', 'string', 'max:255'],
-            // 'color' => ['required', 'string', 'max:255'],
-            // 'year' => ['required', 'string', 'max:255'],
-            // 'last_maintenance_date' => ['required', 'date'],
-            // 'next_maintenance_date' => ['required', 'date'],
-            // 'status' => ['required', 'string', 'max:255'],
+            'plate_number' => ['nullable', 'string', 'max:255'],
+            'color' => ['nullable', 'string', 'max:255'],
+            'year' => ['nullable', 'int'],
+            'last_maintenance_date' => ['nullable', 'date'],
+            'next_maintenance_date' => ['nullable', 'date'],
+            'status' => ['nullable', 'string', 'max:255'],
         ]);
 
         Vehicle::create([
             'brand' => $request->brand,
-            'model' => $request->model ?: 'Unknown',
+            'model' => $request->model ?: null,
+            'plate_number' => $request->plate_number ?: null,
+            'color' => $request->color ?: null,
+            'year' => $request->year ?: null,
+            'last_maintenance_date' => $request->last_maintenance_date ?: null,
+            'next_maintenance_date' => $request->next_maintenance_date ?: null,
+            'status' => $request->status ?: null,
         ]);
 
         return Redirect::route('vehicle.index');

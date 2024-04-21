@@ -42,7 +42,7 @@ const showingNavigationDropdown = ref(false);
                   :href="route('vehicle.index')"
                   :active="route().current('vehicle.index')"
                 >
-                  Dashboard
+                  Vehicle
                 </NavLink>
               </div>
             </div>

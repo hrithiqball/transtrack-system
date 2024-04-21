@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->string('brand');
-            $table->string('model');
-            $table->string('plate_number');
-            $table->string('color');
-            $table->string('year');
-            $table->dateTime('last_maintenance_date');
-            $table->dateTime('next_maintenance_date');
-            $table->string('status');
+            $table->string('brand')->nullable();
+            $table->string('model')->nullable();
+            $table->string('plate_number')->nullable();
+            $table->string('color')->nullable();
+            $table->integer('year')->nullable();
+            $table->dateTime('last_engine_oil_change_date')->nullable();
+            $table->dateTime('last_maintenance_date')->nullable();
+            $table->dateTime('next_maintenance_date')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

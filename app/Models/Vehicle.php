@@ -11,5 +11,14 @@ class Vehicle extends Model
 
     protected $fillable = [
         'brand',
+        'model',
+        'plate_number',
+        'color',
+        'year',
+        'last_maintenance_date',
+        'next_maintenance_date',
+        'status',
+        'created_at',
+        'updated_at',
     ];
 }
