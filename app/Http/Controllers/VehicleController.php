@@ -16,7 +16,7 @@ class VehicleController extends Controller
     public function index(): Response
     {
         return Inertia::render('Vehicle/Management', [
-            // 'vehicles' => Vehicle::all(),
+            'vehicles' => Vehicle::all(),
         ]);
     }
 

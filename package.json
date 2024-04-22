@@ -7,8 +7,14 @@
     "lint": "eslint ./ --ext .vue,.js,.cjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@radix-icons/vue": "^1.0.0",
     "@vueuse/core": "^10.9.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
     "lucide-vue-next": "^0.364.0",
+    "radix-vue": "^1.7.1",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7",
     "vue3-google-map": "^0.20.0"
   },
   "devDependencies": {

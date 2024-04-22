@@ -2,6 +2,10 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import AddVehicleForm from './Partials/AddVehicleForm.vue';
+import { usePage } from '@inertiajs/vue3';
+
+const { vehicles } = usePage().props as any;
+console.log(vehicles);
 </script>
 
 <template>
@@ -16,8 +20,15 @@ import AddVehicleForm from './Partials/AddVehicleForm.vue';
       </h2>
     </template>
 
-    <div class="py-12">
-      <div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
+    <div class="space-y-4 py-4">
+      <div class="mx-auto max-w-7xl space-y-4 sm:px-4 lg:px-8">
+        <div class="rounded-lg bg-white p-4 shadow dark:bg-gray-800">
+          <div v-for="vehicle in vehicles" :key="vehicle.id">
+            {{ vehicle.brand }}
+          </div>
+        </div>
+      </div>
+      <div class="mx-auto max-w-7xl space-y-4 sm:px-4 lg:px-8">
         <div class="bg-white p-4 shadow dark:bg-gray-800 sm:rounded-lg sm:p-8">
           <AddVehicleForm />
         </div>
