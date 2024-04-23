@@ -58,16 +58,6 @@ const createVehicle = () => {
 
 <template>
   <section>
-    <header>
-      <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-        Add Vehicle
-      </h2>
-
-      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-        Register new vehicle to track
-      </p>
-    </header>
-
     <form class="mt-4 space-y-4" @submit.prevent="createVehicle">
       <div>
         <InputLabel for="brand" value="Brand" />
@@ -146,7 +136,7 @@ const createVehicle = () => {
       </div>
 
       <div class="flex items-center gap-4">
-        <Button :disabled="form.processing">Save</Button>
+        <Button variant="outline" :disabled="form.processing">Save</Button>
 
         <Transition
           enter-active-class="transition ease-in-out"
