@@ -10,37 +10,6 @@ import {
 } from '@/Components/ui/dialog';
 import { Button } from '@/Components/ui/button';
 import BookVehicleForm from './Partials/BookVehicleForm.vue';
-
-const dummyData = [
-  {
-    id: '1',
-    startDate: '2021-10-01',
-    endDate: '2021-10-02',
-    vehicle: {
-      brand: 'Toyota',
-      model: 'Vios',
-      plate_number: 'ABC123',
-    },
-    bookedBy: {
-      name: 'John Doe',
-      email: '',
-    },
-  },
-  {
-    id: '2',
-    startDate: '2021-10-03',
-    endDate: '2021-10-04',
-    vehicle: {
-      brand: 'Toyota',
-      model: 'Vios',
-      plate_number: 'ABC123',
-    },
-    bookedBy: {
-      name: 'John Doe',
-      email: '',
-    },
-  },
-];
 </script>
 
 <template>

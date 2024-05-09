@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('booking', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->dateTime('start_date');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('booking');
+        Schema::dropIfExists('bookings');
     }
 };

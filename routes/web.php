@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/vehicle', [VehicleController::class, 'store'])->name('vehicle.store');
 
     Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
+    Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
 });
 
 require __DIR__.'/auth.php';
