@@ -3,7 +3,8 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Button } from '@/Components/ui/button';
-import { useForm } from '@inertiajs/vue3';
+import { Input } from '@/Components/ui/input';
+import { InertiaForm, useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 const brandInput = ref<HTMLInputElement | null>(null);
@@ -13,8 +14,42 @@ const colorInput = ref<HTMLInputElement | null>(null);
 const yearInput = ref<HTMLInputElement | null>(null);
 const latitudeInput = ref<HTMLInputElement | null>(null);
 const longitudeInput = ref<HTMLInputElement | null>(null);
+const previewUrl = ref<string | null>(null);
+const imageFile = ref<File | null>(null);
 
-const form = useForm({
+const previewImage = (event: Event) => {
+  if (!event.target) {
+    return;
+  }
+
+  const fileInput = event.target as HTMLInputElement;
+  const file = fileInput.files?.[0];
+
+  if (!file) {
+    return;
+  }
+
+  imageFile.value = file;
+  const reader = new FileReader();
+
+  reader.onload = (e) => {
+    previewUrl.value = e.target?.result as string;
+    fileInput.value = '';
+  };
+
+  reader.readAsDataURL(file);
+};
+
+const form: InertiaForm<{
+  brand: string;
+  model: string;
+  plate_number: string;
+  color: string;
+  year: string;
+  latitude: string;
+  longitude: string;
+  photo: File | null;
+}> = useForm({
   brand: '',
   model: '',
   plate_number: '',
@@ -22,15 +57,18 @@ const form = useForm({
   year: '',
   latitude: '',
   longitude: '',
+  photo: null,
 });
 
 const createVehicle = () => {
+  form.photo = imageFile.value;
   form.post(route('vehicle.store'), {
     preserveScroll: true,
     onSuccess: () => {
       form.reset();
     },
-    onError: () => {
+    onError: (e) => {
+      console.error(e);
       if (form.errors.brand) {
         form.reset('brand');
         brandInput.value?.focus();
@@ -147,6 +185,24 @@ const createVehicle = () => {
         />
 
         <InputError :message="form.errors.year" class="mt-2" />
+      </div>
+
+      <div>
+        <InputLabel for="photo" value="Photo" />
+
+        <Input
+          type="file"
+          placeholder="Vehicle Image"
+          accept=".png, .jpg"
+          @change="previewImage"
+        />
+        <template v-if="previewUrl">
+          <img
+            :src="previewUrl"
+            alt="Preview Image"
+            class="mt-2 h-auto w-40 object-cover"
+          />
+        </template>
       </div>
 
       <div>

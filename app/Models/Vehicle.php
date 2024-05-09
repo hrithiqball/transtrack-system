@@ -22,5 +22,6 @@ class Vehicle extends Model
         'updated_at',
         'latitude',
         'longitude',
+        'photo'
     ];
 }

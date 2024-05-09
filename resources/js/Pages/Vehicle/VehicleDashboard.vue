@@ -45,6 +45,12 @@ const vehicles = usePage().props.vehicles as Vehicle[];
         <div class="rounded-lg bg-white p-4 shadow dark:bg-gray-800">
           <div v-for="vehicle in vehicles" :key="vehicle.id">
             {{ vehicle.brand }} - {{ vehicle.model }} {{ vehicle.plate_number }}
+            <template v-if="vehicle.photo">
+              <img
+                :src="`storage/${vehicle.photo}`"
+                class="size-40 object-contain"
+              />
+            </template>
           </div>
           <div v-if="($page.props.vehicles as Vehicle[]).length === 0">
             <p class="text-center text-gray-500 dark:text-gray-400">

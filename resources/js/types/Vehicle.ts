@@ -10,4 +10,5 @@ export type Vehicle = {
   status: string;
   latitude: number;
   longitude: number;
+  photo: string;
 };

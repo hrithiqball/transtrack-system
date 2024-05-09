@@ -32,7 +32,14 @@ class VehicleController extends Controller
             'status' => ['nullable', 'string', 'max:255'],
             'latitude' => ['nullable', 'regex:/^[-]?([0-8]?[0-9]|90)\.[0-9]{1,6}$/'],
             'longitude' => ['nullable', 'regex:/^[-]?((1[0-7][0-9])|([0-9]?[0-9]))\.[0-9]{1,6}$/'],
+            'photo' => ['nullable', 'image', 'max:2048']
         ]);
+
+        if ($request->hasFile('photo')) {
+            $photoPath = $request->file('photo')->store('public/vehicles');
+            $photoPath = str_replace('public/', '', $photoPath);
+            $request->merge(['photo' => $photoPath]);
+        }
 
         Vehicle::create([
             'brand' => $request->brand,
@@ -45,6 +52,7 @@ class VehicleController extends Controller
             'status' => $request->status ?: null,
             'latitude' => $request->latitude ?: null,
             'longitude' => $request->longitude ?: null,
+            'photo' => $photoPath
         ]);
 
         return Redirect::route('vehicle.index');

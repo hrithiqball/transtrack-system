@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@radix-icons/vue": "^1.0.0",
+    "@vee-validate/zod": "^4.12.8",
     "@vueuse/core": "^10.9.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
@@ -15,7 +16,9 @@
     "radix-vue": "^1.7.1",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "vue3-google-map": "^0.20.0"
+    "vee-validate": "^4.12.8",
+    "vue3-google-map": "^0.20.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@inertiajs/vue3": "^1.0.0",
