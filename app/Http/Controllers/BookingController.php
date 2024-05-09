@@ -16,7 +16,7 @@ class BookingController extends Controller
     public function index(): Response
     {
         return Inertia::render('Booking/BookingDashboard', [
-            'booking' => Booking::all(),
+            'bookings' => Booking::all(),
             'vehicles' => Vehicle::all()
         ]);
     }

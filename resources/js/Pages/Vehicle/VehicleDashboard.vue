@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, usePage } from '@inertiajs/vue3';
 import AddVehicleForm from './Partials/AddVehicleForm.vue';
 import { Button } from '@/Components/ui/button';
 import {
@@ -11,6 +11,8 @@ import {
   DialogTrigger,
 } from '@/Components/ui/dialog';
 import { Vehicle } from '@/types/Vehicle';
+
+const vehicles = usePage().props.vehicles as Vehicle[];
 </script>
 
 <template>
@@ -41,10 +43,7 @@ import { Vehicle } from '@/types/Vehicle';
     <div class="space-y-4 py-4">
       <div class="mx-auto max-w-7xl space-y-4 sm:px-4 lg:px-8">
         <div class="rounded-lg bg-white p-4 shadow dark:bg-gray-800">
-          <div
-            v-for="vehicle in $page.props.vehicles as Vehicle[]"
-            :key="vehicle.id"
-          >
+          <div v-for="vehicle in vehicles" :key="vehicle.id">
             {{ vehicle.brand }} - {{ vehicle.model }} {{ vehicle.plate_number }}
           </div>
           <div v-if="($page.props.vehicles as Vehicle[]).length === 0">
