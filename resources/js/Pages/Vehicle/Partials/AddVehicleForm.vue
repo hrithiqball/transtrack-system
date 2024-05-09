@@ -63,7 +63,7 @@ const createVehicle = () => {
         <InputLabel for="brand" value="Brand" />
 
         <TextInput
-          id="model"
+          id="brand"
           v-model="form.brand"
           type="text"
           required

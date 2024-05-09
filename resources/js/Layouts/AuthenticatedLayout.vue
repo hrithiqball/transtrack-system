@@ -41,6 +41,11 @@ const showingNavigationDropdown = ref(false);
                 >
                   Vehicle
                 </NavLink>
+                <NavLink
+                  :href="route('booking.index')"
+                  :active="route().current('booking.index')"
+                  >Booking</NavLink
+                >
               </div>
             </div>
 
