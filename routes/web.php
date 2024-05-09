@@ -17,7 +17,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard/MainDashboard', [
+        'vehicles' => \App\Models\Vehicle::all()
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -27,7 +29,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/vehicle', [VehicleController::class, 'index'])->name('vehicle.index');
     Route::post('/vehicle', [VehicleController::class, 'store'])->name('vehicle.store');
-    Route::get('/get-vehicles', [VehicleController::class, 'get'])->name('vehicle.get-list');
 
     Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
 });

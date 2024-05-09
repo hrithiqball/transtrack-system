@@ -31,6 +31,7 @@ const createBooking = () => {
       <div>
         <InputLabel for="vehicleId">Vehicle</InputLabel>
       </div>
+      <p>{{ $page.props.vehicles }}</p>
     </form>
   </section>
 </template>

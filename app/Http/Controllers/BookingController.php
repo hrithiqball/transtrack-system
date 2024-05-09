@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Models\Booking;
+use App\Models\Vehicle;
 
 class BookingController extends Controller
 {
@@ -14,6 +15,7 @@ class BookingController extends Controller
     public function index(): Response {
         return Inertia::render('Booking/BookingDashboard', [
             // 'booking' => Booking::all(),
+            'vehicles' => Vehicle::all()
         ]);
     }
 }

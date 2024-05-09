@@ -9,6 +9,7 @@ import {
   DialogTrigger,
 } from '@/Components/ui/dialog';
 import { Button } from '@/Components/ui/button';
+import BookVehicleForm from './Partials/BookVehicleForm.vue';
 
 const dummyData = [
   {
@@ -61,6 +62,7 @@ const dummyData = [
             <DialogHeader>
               <DialogTitle>Book Vehicle</DialogTitle>
             </DialogHeader>
+            <BookVehicleForm />
           </DialogContent>
         </Dialog>
       </div>

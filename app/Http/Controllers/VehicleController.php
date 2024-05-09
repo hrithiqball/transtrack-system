@@ -12,15 +12,13 @@ use Inertia\Response;
 
 class VehicleController extends Controller
 {
-    // Display all vehicles
     public function index(): Response
     {
-        return Inertia::render('Vehicle/Management', [
+        return Inertia::render('Vehicle/VehicleDashboard', [
             'vehicles' => Vehicle::all(),
         ]);
     }
 
-    // Store new vehicle
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
@@ -32,6 +30,8 @@ class VehicleController extends Controller
             'last_maintenance_date' => ['nullable', 'date'],
             'next_maintenance_date' => ['nullable', 'date'],
             'status' => ['nullable', 'string', 'max:255'],
+            'latitude' => ['nullable', 'regex:/^[-]?([0-8]?[0-9]|90)\.[0-9]{1,6}$/'],
+            'longitude' => ['nullable', 'regex:/^[-]?((1[0-7][0-9])|([0-9]?[0-9]))\.[0-9]{1,6}$/'],
         ]);
 
         Vehicle::create([
@@ -43,6 +43,8 @@ class VehicleController extends Controller
             'last_maintenance_date' => $request->last_maintenance_date ?: null,
             'next_maintenance_date' => $request->next_maintenance_date ?: null,
             'status' => $request->status ?: null,
+            'latitude' => $request->latitude ?: null,
+            'longitude' => $request->longitude ?: null,
         ]);
 
         return Redirect::route('vehicle.index');

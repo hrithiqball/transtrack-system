@@ -8,4 +8,6 @@ export type Vehicle = {
   last_maintenance_date: Date;
   next_maintenance_date: Date;
   status: string;
+  latitude: number;
+  longitude: number;
 };

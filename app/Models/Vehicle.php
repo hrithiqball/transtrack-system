@@ -20,5 +20,7 @@ class Vehicle extends Model
         'status',
         'created_at',
         'updated_at',
+        'latitude',
+        'longitude',
     ];
 }

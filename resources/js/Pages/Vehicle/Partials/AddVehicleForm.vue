@@ -11,6 +11,8 @@ const modelInput = ref<HTMLInputElement | null>(null);
 const plateNumberInput = ref<HTMLInputElement | null>(null);
 const colorInput = ref<HTMLInputElement | null>(null);
 const yearInput = ref<HTMLInputElement | null>(null);
+const latitudeInput = ref<HTMLInputElement | null>(null);
+const longitudeInput = ref<HTMLInputElement | null>(null);
 
 const form = useForm({
   brand: '',
@@ -18,6 +20,8 @@ const form = useForm({
   plate_number: '',
   color: '#ffffff',
   year: '',
+  latitude: '',
+  longitude: '',
 });
 
 const createVehicle = () => {
@@ -50,6 +54,16 @@ const createVehicle = () => {
       if (form.errors.year) {
         form.reset('year');
         yearInput.value?.focus();
+      }
+
+      if (form.errors.latitude) {
+        form.reset('latitude');
+        latitudeInput.value?.focus();
+      }
+
+      if (form.errors.longitude) {
+        form.reset('longitude');
+        longitudeInput.value?.focus();
       }
     },
   });
@@ -133,6 +147,36 @@ const createVehicle = () => {
         />
 
         <InputError :message="form.errors.year" class="mt-2" />
+      </div>
+
+      <div>
+        <InputLabel for="latitude" value="Latitude" />
+
+        <TextInput
+          id="latitude"
+          v-model="form.latitude"
+          type="number"
+          step="0.0000001"
+          required
+          class="mt-1 block w-full"
+        />
+
+        <InputError :message="form.errors.latitude" class="mt-2" />
+      </div>
+
+      <div>
+        <InputLabel for="longitude" value="Longitude" />
+
+        <TextInput
+          id="longitude"
+          v-model="form.longitude"
+          type="number"
+          step="0.0000001"
+          required
+          class="mt-1 block w-full"
+        />
+
+        <InputError :message="form.errors.longitude" class="mt-2" />
       </div>
 
       <div class="flex items-center gap-4">
