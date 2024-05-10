@@ -11,8 +11,33 @@ import {
   DialogTrigger,
 } from '@/Components/ui/dialog';
 import { Vehicle } from '@/types/Vehicle';
+import DataTable from './Partials/vehicle-table/VehicleTable.vue';
+import { Payment, columns } from './Partials/vehicle-table/vehicleColumn';
+import { onMounted, ref } from 'vue';
 
 const vehicles = usePage().props.vehicles as Vehicle[];
+const data = ref<Payment[]>([]);
+
+const getData = () => {
+  return [
+    {
+      id: '728ed52f',
+      amount: 100,
+      status: 'pending',
+      email: 'm@example.com',
+    },
+    {
+      id: '489e1d42',
+      amount: 125,
+      status: 'processing',
+      email: 'example@gmail.com',
+    },
+  ];
+};
+
+onMounted(() => {
+  data.value = getData();
+});
 </script>
 
 <template>
@@ -60,5 +85,6 @@ const vehicles = usePage().props.vehicles as Vehicle[];
         </div>
       </div>
     </div>
+    <DataTable :columns="columns" :data="data" />
   </AuthenticatedLayout>
 </template>
