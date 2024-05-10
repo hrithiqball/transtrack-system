@@ -52,7 +52,7 @@ class VehicleController extends Controller
             'status' => $request->status ?: null,
             'latitude' => $request->latitude ?: null,
             'longitude' => $request->longitude ?: null,
-            'photo' => $photoPath
+            'photo' => $request->hasFile('photo') ? $photoPath : null
         ]);
 
         return Redirect::route('vehicle.index');

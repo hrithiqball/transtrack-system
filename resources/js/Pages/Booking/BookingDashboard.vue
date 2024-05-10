@@ -43,9 +43,16 @@ const bookings = usePage().props.bookings as Booking[];
     <div class="space-y-4 py-4">
       <div class="mx-auto max-w-7xl space-y-4 sm:px-4 lg:px-8">
         <div class="rounded-lg bg-white p-4 shadow dark:bg-gray-800">
-          <div v-for="booking in bookings" :key="booking.id">
-            {{ booking.status }}
-          </div>
+          <template v-if="bookings.length > 0">
+            <div v-for="booking in bookings" :key="booking.id">
+              {{ booking.status }}
+            </div>
+          </template>
+          <template v-else>
+            <div class="text-center text-gray-500 dark:text-gray-400">
+              No bookings found
+            </div>
+          </template>
         </div>
       </div>
     </div>

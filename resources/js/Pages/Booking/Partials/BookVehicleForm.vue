@@ -26,7 +26,7 @@ import {
 import { Button } from '@/Components/ui/button';
 import { RangeCalendar } from '@/Components/ui/range-calendar';
 import type { DateRange } from 'radix-vue';
-import Label from '@/components/ui/label/Label.vue';
+import { Label } from '@/Components/ui/label';
 import Textarea from '@/Components/ui/textarea/Textarea.vue';
 
 const df = new DateFormatter('en-MY', {
@@ -111,18 +111,6 @@ const createBooking = () => {
       }
     },
   });
-  // form.post(route('booking.store'), {
-  //   preserveScroll: true,
-  //   onSuccess: () => {
-  //     form.reset();
-  //   },
-  //   onError: () => {
-  //     if (form.errors.vehicleId) {
-  //       form.reset('vehicleId');
-  //       vehicleIdInput.value?.focus();
-  //     }
-  //   },
-  // });
 };
 </script>
 
