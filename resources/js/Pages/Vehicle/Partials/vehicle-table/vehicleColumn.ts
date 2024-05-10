@@ -4,31 +4,9 @@ import { ArrowUpDown, ChevronDown } from 'lucide-vue-next';
 import { h } from 'vue';
 import Button from '@/Components/ui/button/Button.vue';
 import { Checkbox } from '@/Components/ui/checkbox';
+import { Vehicle } from '@/types/Vehicle';
 
-export interface Payment {
-  id: string;
-  amount: number;
-  // status: 'pending' | 'processing' | 'success' | 'failed';
-  status: string;
-  email: string;
-}
-
-export const data: Payment[] = [
-  {
-    id: '728ed52f',
-    amount: 100,
-    status: 'pending',
-    email: 'm@example.com',
-  },
-  {
-    id: '489e1d42',
-    amount: 125,
-    status: 'processing',
-    email: 'example@gmail.com',
-  },
-];
-
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<Vehicle>[] = [
   {
     id: 'select',
     header: ({ table }) =>
@@ -49,20 +27,14 @@ export const columns: ColumnDef<Payment>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: 'amount',
-    header: () => h('div', 'Amount'),
+    accessorKey: 'plate_number',
+    header: () => h('div', 'Plate Number'),
     cell: ({ row }) => {
-      const amount = row.original.amount;
-      const formatted = new Intl.NumberFormat('en-MY', {
-        style: 'currency',
-        currency: 'MYR',
-      }).format(amount);
-
-      return h('div', formatted);
+      return h('div', row.original.plate_number);
     },
   },
   {
-    accessorKey: 'email',
+    accessorKey: 'brand',
     header: ({ column }) => {
       return h(
         Button,
@@ -70,10 +42,10 @@ export const columns: ColumnDef<Payment>[] = [
           variant: 'ghost',
           onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
         },
-        () => ['Email', h(ArrowUpDown, { class: 'ml-2 size-4' })],
+        () => ['Brand', h(ArrowUpDown, { class: 'ml-2 size-4' })],
       );
     },
-    cell: ({ row }) => h('div', { class: 'lowercase' }, row.original.email),
+    cell: ({ row }) => h('div', { class: 'lowercase' }, row.original.brand),
   },
   {
     id: 'actions',
@@ -83,7 +55,7 @@ export const columns: ColumnDef<Payment>[] = [
         'div',
         { class: 'relative', style: { 'text-align': 'right' } },
         h(DropdownAction, {
-          payment: row.original,
+          plateNumber: row.original.plate_number,
         }),
       );
     },

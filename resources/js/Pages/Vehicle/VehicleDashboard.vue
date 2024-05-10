@@ -12,27 +12,14 @@ import {
 } from '@/Components/ui/dialog';
 import { Vehicle } from '@/types/Vehicle';
 import DataTable from './Partials/vehicle-table/VehicleTable.vue';
-import { Payment, columns } from './Partials/vehicle-table/vehicleColumn';
+import { columns } from './Partials/vehicle-table/vehicleColumn';
 import { onMounted, ref } from 'vue';
 
 const vehicles = usePage().props.vehicles as Vehicle[];
-const data = ref<Payment[]>([]);
+const data = ref<Vehicle[]>([]);
 
 const getData = () => {
-  return [
-    {
-      id: '728ed52f',
-      amount: 100,
-      status: 'pending',
-      email: 'm@example.com',
-    },
-    {
-      id: '489e1d42',
-      amount: 125,
-      status: 'processing',
-      email: 'example@gmail.com',
-    },
-  ];
+  return vehicles;
 };
 
 onMounted(() => {
@@ -65,7 +52,7 @@ onMounted(() => {
       </div>
     </template>
 
-    <div class="space-y-4 py-4">
+    <!-- <div class="space-y-4 py-4">
       <div class="mx-auto max-w-7xl space-y-4 sm:px-4 lg:px-8">
         <div class="rounded-lg bg-white p-4 shadow dark:bg-gray-800">
           <div v-for="vehicle in vehicles" :key="vehicle.id">
@@ -84,7 +71,7 @@ onMounted(() => {
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <DataTable :columns="columns" :data="data" />
   </AuthenticatedLayout>
 </template>

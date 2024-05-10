@@ -11,9 +11,7 @@ import {
 import { Button } from '@/Components/ui/button';
 
 defineProps<{
-  payment: {
-    id: string;
-  };
+  plateNumber: string;
 }>();
 
 const copy = (id: string) => {
@@ -31,7 +29,7 @@ const copy = (id: string) => {
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end">
       <DropdownMenuLabel>Actions</DropdownMenuLabel>
-      <DropdownMenuItem @click="copy(payment.id)">
+      <DropdownMenuItem @click="copy(plateNumber)">
         Copy payment ID
       </DropdownMenuItem>
       <DropdownMenuSeparator />
