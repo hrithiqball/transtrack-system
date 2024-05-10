@@ -1,10 +1,12 @@
 import { ColumnDef } from '@tanstack/vue-table';
-import DropdownAction from '../vehicle-table/DropdownAction.vue';
-import { ArrowUpDown, ChevronDown } from 'lucide-vue-next';
-import { h } from 'vue';
-import Button from '@/Components/ui/button/Button.vue';
+import { ArrowUpDown } from 'lucide-vue-next';
+import { Button } from '@/Components/ui/button';
 import { Checkbox } from '@/Components/ui/checkbox';
 import { Vehicle } from '@/types/Vehicle';
+import { h } from 'vue';
+import DropdownAction from '../vehicle-table/DropdownAction.vue';
+import PlateNumberCell from './PlateNumberCell.vue';
+import StatusCell from './StatusCell.vue';
 
 export const columns: ColumnDef<Vehicle>[] = [
   {
@@ -28,10 +30,20 @@ export const columns: ColumnDef<Vehicle>[] = [
   },
   {
     accessorKey: 'plate_number',
-    header: () => h('div', 'Plate Number'),
-    cell: ({ row }) => {
-      return h('div', row.original.plate_number);
+    header: ({ column }) => {
+      return h(
+        Button,
+        {
+          variant: 'ghost',
+          onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+        },
+        () => ['Plate Number', h(ArrowUpDown, { class: 'ml-2 size-4' })],
+      );
     },
+    cell: ({ row }) => {
+      return h('div', h(PlateNumberCell, { vehicle: row.original }));
+    },
+    enableHiding: false,
   },
   {
     accessorKey: 'brand',
@@ -46,6 +58,34 @@ export const columns: ColumnDef<Vehicle>[] = [
       );
     },
     cell: ({ row }) => h('div', { class: 'lowercase' }, row.original.brand),
+  },
+  {
+    accessorKey: 'model',
+    header: ({ column }) => {
+      return h(
+        Button,
+        {
+          variant: 'ghost',
+          onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+        },
+        () => ['Model', h(ArrowUpDown, { class: 'ml-2 size-4' })],
+      );
+    },
+    cell: ({ row }) => h('div', row.original.model),
+  },
+  {
+    accessorKey: 'status',
+    header: ({ column }) => {
+      return h(
+        Button,
+        {
+          variant: 'ghost',
+          onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+        },
+        () => ['Status', h(ArrowUpDown, { class: 'ml-2 size-4' })],
+      );
+    },
+    cell: ({ row }) => h(StatusCell, { vehicle: row.original }),
   },
   {
     id: 'actions',
