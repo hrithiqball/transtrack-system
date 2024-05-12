@@ -29,5 +29,5 @@ defineProps<{ vehicle: Vehicle }>();
   >
     {{ vehicle.status }}
   </span>
-  <span v-if="!vehicle.status">N/A</span>
+  <span v-if="!vehicle.status" class="animate-spin">N/A</span>
 </template>
