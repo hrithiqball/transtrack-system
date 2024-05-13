@@ -81,3 +81,22 @@ php artisan serve
 # Terminal 2
 npm run dev
 ```
+
+
+## To update to latest version of the system
+
+```bash
+git pull
+```
+
+```bash
+npm i
+```
+
+```bash
+composer install
+```
+
+```bash
+php artisan migrate
+```
