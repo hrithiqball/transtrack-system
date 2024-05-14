@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '@/Components/ui/dropdown-menu';
 import { Button } from '@/Components/ui/button';
+import { router } from '@inertiajs/vue3';
 
 defineProps<{
   plateNumber: string;
@@ -16,6 +17,10 @@ defineProps<{
 
 const copy = (id: string) => {
   navigator.clipboard.writeText(id);
+};
+
+const openDetails = () => {
+  router.visit(`/`);
 };
 </script>
 
@@ -30,11 +35,12 @@ const copy = (id: string) => {
     <DropdownMenuContent align="end">
       <DropdownMenuLabel>Actions</DropdownMenuLabel>
       <DropdownMenuItem @click="copy(plateNumber)">
-        Copy payment ID
+        Copy plate number
       </DropdownMenuItem>
       <DropdownMenuSeparator />
-      <DropdownMenuItem>View Customer</DropdownMenuItem>
-      <DropdownMenuItem>View Payment details</DropdownMenuItem>
+      <DropdownMenuItem>Details</DropdownMenuItem>
+      <DropdownMenuItem>Edit</DropdownMenuItem>
+      <DropdownMenuItem class="text-red-500">Delete</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
 </template>

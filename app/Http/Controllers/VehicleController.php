@@ -13,6 +13,7 @@ use Inertia\Response;
 
 class VehicleController extends Controller
 {
+    // View
     public function index(): Response
     {
         return Inertia::render('Vehicle/VehicleDashboard', [
@@ -20,6 +21,23 @@ class VehicleController extends Controller
         ]);
     }
 
+    public function details(int $id)
+    {
+        $vehicle = Vehicle::find($id);
+        return Inertia::render('Vehicle/VehicleDetail', [
+            'vehicle' => $vehicle,
+        ]);
+    }
+
+    public function edit(int $id)
+    {
+        $vehicle = Vehicle::find($id);
+        return Inertia::render('Vehicle/VehicleUpdate', [
+            'vehicle' => $vehicle,
+        ]);
+    }
+
+    // CRUD
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
@@ -59,17 +77,16 @@ class VehicleController extends Controller
         return Redirect::route('vehicle.index');
     }
 
-    public function edit(int $id)
-    {
-        $vehicle = Vehicle::find($id);
-        return Inertia::render('Vehicle/VehicleUpdate', [
-            'vehicle' => $vehicle,
-        ]);
-    }
-
     public function update(UpdateVehicleRequest $request, Vehicle $vehicle)
     {
         $vehicle->update($request->validated());
+
+        return redirect()->route('vehicle.index');
+    }
+
+    public function destroy(Vehicle $vehicle)
+    {
+        $vehicle->delete();
 
         return redirect()->route('vehicle.index');
     }
