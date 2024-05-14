@@ -30,11 +30,11 @@ Allow user to login and logout from the web application using session management
 
 Allow new user to register to the web system.
 
-- [ ] Information management: Create / Read / Update / Delete
+- [x] Information management: Create / Read / Update / Delete
 
 Allow user to manage information from a database such as to create, read, update and delete information from the database.
 
-- [ ] Dashboard
+- [x] Dashboard
 
 To provide user an overview of the process or information by different data representations.
 
@@ -81,7 +81,6 @@ php artisan serve
 # Terminal 2
 npm run dev
 ```
-
 
 ## To update to latest version of the system
 

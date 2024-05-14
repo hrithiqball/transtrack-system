@@ -21,7 +21,7 @@ class VehicleController extends Controller
         ]);
     }
 
-    public function details(int $id)
+    public function detail(int $id)
     {
         $vehicle = Vehicle::find($id);
         return Inertia::render('Vehicle/VehicleDetail', [
@@ -37,7 +37,7 @@ class VehicleController extends Controller
         ]);
     }
 
-    // CRUD
+    // Operations
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
@@ -77,17 +77,19 @@ class VehicleController extends Controller
         return Redirect::route('vehicle.index');
     }
 
-    public function update(UpdateVehicleRequest $request, Vehicle $vehicle)
+    public function update(UpdateVehicleRequest $request, int $id)
     {
+        $vehicle = Vehicle::find($id);
         $vehicle->update($request->validated());
 
         return redirect()->route('vehicle.index');
     }
 
-    public function destroy(Vehicle $vehicle)
+    public function destroy(int $id)
     {
+        $vehicle = Vehicle::findOrFail($id);
         $vehicle->delete();
 
-        return redirect()->route('vehicle.index');
+        return Redirect::route('vehicle.index');
     }
 }

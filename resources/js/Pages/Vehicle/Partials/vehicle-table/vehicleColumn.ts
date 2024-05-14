@@ -95,7 +95,7 @@ export const columns: ColumnDef<Vehicle>[] = [
         'div',
         { class: 'relative', style: { 'text-align': 'right' } },
         h(DropdownAction, {
-          plateNumber: row.original.plate_number,
+          vehicle: row.original,
         }),
       );
     },

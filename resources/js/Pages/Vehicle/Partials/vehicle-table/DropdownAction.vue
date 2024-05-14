@@ -4,23 +4,28 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/Components/ui/dropdown-menu';
 import { Button } from '@/Components/ui/button';
 import { router } from '@inertiajs/vue3';
+import { Vehicle } from '@/types/Vehicle';
 
 defineProps<{
-  plateNumber: string;
+  vehicle: Vehicle;
 }>();
 
-const copy = (id: string) => {
-  navigator.clipboard.writeText(id);
+const openDetails = (id: number) => {
+  router.visit(route('vehicle.detail', { id }));
 };
 
-const openDetails = () => {
-  router.visit(`/`);
+const editVehicle = (id: number) => {
+  router.visit(route('vehicle.edit', { id }));
+};
+
+const deleteVehicle = (id: number) => {
+  if (confirm('Are you sure you want to delete this vehicle?')) {
+    router.delete(route('vehicle.destroy', { id }));
+  }
 };
 </script>
 
@@ -33,14 +38,15 @@ const openDetails = () => {
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end">
-      <DropdownMenuLabel>Actions</DropdownMenuLabel>
-      <DropdownMenuItem @click="copy(plateNumber)">
-        Copy plate number
+      <DropdownMenuItem @click="openDetails(vehicle.id)">
+        Details
       </DropdownMenuItem>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem>Details</DropdownMenuItem>
-      <DropdownMenuItem>Edit</DropdownMenuItem>
-      <DropdownMenuItem class="text-red-500">Delete</DropdownMenuItem>
+      <DropdownMenuItem @click="editVehicle(vehicle.id)">
+        Edit
+      </DropdownMenuItem>
+      <DropdownMenuItem class="text-red-500" @click="deleteVehicle(vehicle.id)">
+        Delete
+      </DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
 </template>
