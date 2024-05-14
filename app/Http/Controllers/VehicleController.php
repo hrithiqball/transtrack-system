@@ -64,11 +64,10 @@ class VehicleController extends Controller
         $vehicle = Vehicle::find($id);
         return Inertia::render('Vehicle/VehicleUpdate', [
             'vehicle' => $vehicle,
-            'id' => $id
         ]);
     }
 
-    public function update(UpdateVehicleRequest $request, Vehicle $vehicle) 
+    public function update(UpdateVehicleRequest $request, Vehicle $vehicle)
     {
         $vehicle->update($request->validated());
 

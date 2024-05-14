@@ -23,8 +23,8 @@ class UpdateVehicleRequest extends FormRequest
     {
         return [
             'plate_number' => ['string', 'max:12'],
-            'latitude' => ['numeric'],
-            'longitude' => ['numeric'],
+            // 'latitude' => ['numeric'],
+            // 'longitude' => ['numeric'],
         ];
     }
 
@@ -32,8 +32,8 @@ class UpdateVehicleRequest extends FormRequest
     {
         return[
             'plate_number' => 'plate_number',
-            'latitude' => 'latitude',
-            'longitude' => 'longitude',
+            // 'latitude' => 'latitude',
+            // 'longitude' => 'longitude',
         ];
     }
 }
