@@ -8,6 +8,9 @@
   },
   "dependencies": {
     "@radix-icons/vue": "^1.0.0",
+    "@schedule-x/calendar": "^1.41.0",
+    "@schedule-x/theme-default": "^1.41.0",
+    "@schedule-x/vue": "^1.36.0",
     "@tanstack/vue-table": "^8.16.0",
     "@vee-validate/zod": "^4.12.8",
     "@vueuse/core": "^10.9.0",

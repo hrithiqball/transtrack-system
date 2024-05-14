@@ -2,6 +2,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import Map from '@/Pages/Dashboard/Partials/Map.vue';
+import CalendarMaintenance from './Partials/CalendarMaintenance.vue';
 </script>
 
 <template>
@@ -22,6 +23,7 @@ import Map from '@/Pages/Dashboard/Partials/Map.vue';
           class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg"
         >
           <Map />
+          <CalendarMaintenance />
         </div>
       </div>
     </div>
