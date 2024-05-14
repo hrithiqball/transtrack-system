@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/vehicle', [VehicleController::class, 'index'])->name('vehicle.index');
     Route::post('/vehicle', [VehicleController::class, 'store'])->name('vehicle.store');
+    Route::get('/vehicle/{id}/edit', [VehicleController::class, 'edit'])->name('vehicle.edit');
 
     Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
     Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');

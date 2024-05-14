@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateVehicleRequest;
 use App\Models\Vehicle;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -56,5 +57,21 @@ class VehicleController extends Controller
         ]);
 
         return Redirect::route('vehicle.index');
+    }
+
+    public function edit(int $id)
+    {
+        $vehicle = Vehicle::find($id);
+        return Inertia::render('Vehicle/VehicleUpdate', [
+            'vehicle' => $vehicle,
+            'id' => $id
+        ]);
+    }
+
+    public function update(UpdateVehicleRequest $request, Vehicle $vehicle) 
+    {
+        $vehicle->update($request->validated());
+
+        return redirect()->route('vehicle.index');
     }
 }
