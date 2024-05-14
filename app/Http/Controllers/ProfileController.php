@@ -24,6 +24,11 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function admin(): Response
+    {
+        return Inertia::render('Admin/AdminDashboard');
+    }
+
     /**
      * Update the user's profile information.
      */
