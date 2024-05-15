@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Booking;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -26,7 +27,9 @@ class ProfileController extends Controller
 
     public function admin(): Response
     {
-        return Inertia::render('Admin/AdminDashboard');
+        return Inertia::render('Admin/AdminDashboard', [
+            'bookings' => Booking::where('status', 'pending')->get(),
+        ]);
     }
 
     /**
