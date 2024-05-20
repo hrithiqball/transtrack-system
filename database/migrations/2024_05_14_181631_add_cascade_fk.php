@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('bookings', function (Blueprint $table) {
-            $table->dropForeign(['vehicle_id']);
+            if (Schema::hasColumn('bookings', 'bookings_vehicle_id_foreign')) {
+                $table->dropForeign(['vehicle_id']);
+            }
 
             // add foreign key constraint
             $table->foreign('vehicle_id')
