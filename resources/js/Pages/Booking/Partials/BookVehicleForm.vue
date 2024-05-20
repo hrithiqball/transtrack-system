@@ -27,7 +27,7 @@ import { Button } from '@/Components/ui/button';
 import { RangeCalendar } from '@/Components/ui/range-calendar';
 import type { DateRange } from 'radix-vue';
 import { Label } from '@/Components/ui/label';
-import Textarea from '@/Components/ui/textarea/Textarea.vue';
+import { Textarea } from '@/Components/ui/textarea';
 
 const df = new DateFormatter('en-MY', {
   dateStyle: 'long',

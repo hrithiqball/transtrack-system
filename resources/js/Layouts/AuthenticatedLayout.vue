@@ -7,6 +7,7 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
 import { Moon, Sun } from 'lucide-vue-next';
 import { useDark, useToggle } from '@vueuse/core';
+import { Toaster } from 'vue-sonner';
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
@@ -14,6 +15,7 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
+  <Toaster />
   <div>
     <div class="flex min-h-screen flex-col bg-gray-100 dark:bg-gray-900">
       <nav

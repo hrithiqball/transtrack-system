@@ -1,12 +1,5 @@
 TODO
 
-create 4 role
-
-- admin
-- driver
-- personnel
-- fleet manager
-
-only fleet manager can create, update, delete vehicle
-
-create new tab for maintenance where personnel can update maintenance status and approval status
+- only fleet manager can create, update, delete vehicle
+- create select option for personnel in maintenance creation
+- create select option for vehicle in maintenance creation

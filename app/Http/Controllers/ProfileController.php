@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\UpdateRoleRequest;
 use App\Models\Booking;
+use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -28,6 +30,7 @@ class ProfileController extends Controller
     public function admin(): Response
     {
         return Inertia::render('Admin/AdminDashboard', [
+            'users' => User::all(),
             'bookings' => Booking::where('status', 'pending')->get(),
         ]);
     }
@@ -46,6 +49,14 @@ class ProfileController extends Controller
         $request->user()->save();
 
         return Redirect::route('profile.edit');
+    }
+
+    public function update_role(UpdateRoleRequest $request, int $id): RedirectResponse
+    {
+        $user = User::find($id);
+        $user->update($request->validated());
+
+        return Redirect::route('admin.index');
     }
 
     /**

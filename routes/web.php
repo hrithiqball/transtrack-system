@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -26,10 +27,13 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [ProfileController::class, 'admin'])->name('admin.index')->middleware(AdminMiddleware::class);
+    Route::put('/admin/role/{id}', [ProfileController::class, 'update_role'])->name('admin.update-role');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/user/list', [UserController::class, 'list'])->name('user.list');
 
     Route::get('/vehicle', [VehicleController::class, 'index'])->name('vehicle.index');
     Route::get('/vehicle/{id}', [VehicleController::class, 'detail'])->name('vehicle.detail');
@@ -43,5 +47,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/maintenance', [MaintenanceController::class, 'index'])->name('maintenance.index');
 });
+
 
 require __DIR__ . '/auth.php';
