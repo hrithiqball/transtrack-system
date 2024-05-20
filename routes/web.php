@@ -35,17 +35,18 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/user/list', [UserController::class, 'list'])->name('user.list');
 
-    Route::get('/vehicle', [VehicleController::class, 'index'])->name('vehicle.index');
+    Route::get('/vehicle', [VehicleController::class, 'view'])->name('vehicle.view');
     Route::get('/vehicle/{id}', [VehicleController::class, 'detail'])->name('vehicle.detail');
     Route::get('/vehicle/{id}/edit', [VehicleController::class, 'edit'])->name('vehicle.edit');
     Route::post('/vehicle', [VehicleController::class, 'store'])->name('vehicle.store');
     Route::put('/vehicle/{vehicle}', [VehicleController::class, 'update'])->name('vehicle.update');
     Route::delete('/vehicle/{vehicle}', [VehicleController::class, 'destroy'])->name('vehicle.destroy');
 
-    Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
+    Route::get('/booking', [BookingController::class, 'view'])->name('booking.view');
     Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
 
-    Route::get('/maintenance', [MaintenanceController::class, 'index'])->name('maintenance.index');
+    Route::get('/maintenance', [MaintenanceController::class, 'view'])->name('maintenance.view');
+    Route::post('/maintenance', [MaintenanceController::class, 'store'])->name('maintenance.store');
 });
 
 

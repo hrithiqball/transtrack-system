@@ -4,15 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateMaintenanceRequest extends FormRequest
+class CreateBookingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        // return auth()->check();
-        return true;
+        return auth()->check();
     }
 
     /**
@@ -23,20 +22,24 @@ class CreateMaintenanceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'maintenance_date' => ['required', 'date'],
-            'serviced_by' => ['required', 'string'],
+            'start_date' => ['required', 'date'],
+            'end_date' => ['required', 'date'],
             'vehicle_id' => ['required', 'int'],
-            'remarks' => ['nullable', 'string', 'max:255'],
+            'booked_by' => ['required', 'int'],
+            'notes' => ['nullable', 'string', 'max:255'],
+            'status' => ['nullable', 'string', 'max:255'],
         ];
     }
 
     public function attributes()
     {
         return [
-            'maintenance_date' => 'maintenance_date' ?: null,
-            'serviced_by' => 'serviced_by',
+            'start_date' => 'start_date' ?: null,
+            'end_date' => 'end_date' ?: null,
             'vehicle_id' => 'vehicle_id',
-            'remarks' => 'remarks' ?: null,
+            'booked_by' => 'booked_by' ?: null,
+            'notes' => 'notes' ?: null,
+            'status' => 'status' ?: 'Pending',
         ];
     }
 }

@@ -13,7 +13,7 @@ use Inertia\Response;
 
 class MaintenanceController extends Controller
 {
-    public function index(): Response
+    public function view(): Response
     {
         $maintenances = Maintenance::with(['vehicle', 'servicedBy'])->get()->map(function ($maintenance) {
             return [
@@ -30,9 +30,9 @@ class MaintenanceController extends Controller
 
     public function store(CreateMaintenanceRequest $request): RedirectResponse
     {
-        Maintenance::create($request->validate());
+        Maintenance::create($request->validated());
 
-        return Redirect::route('maintenance.index');
+        return Redirect::route('maintenance.view');
     }
 
     public function update(UpdateMaintenanceRequest $request): RedirectResponse
@@ -40,7 +40,7 @@ class MaintenanceController extends Controller
         $maintenance = Maintenance::findOrFail($request->id);
         $maintenance->update($request->validated());
 
-        return Redirect::route('maintenance.index');
+        return Redirect::route('maintenance.view');
     }
 
     public function destroy(int $id): RedirectResponse
@@ -48,6 +48,6 @@ class MaintenanceController extends Controller
         $maintenance = Maintenance::findOrFail($id);
         $maintenance->delete();
 
-        return Redirect::route('maintenance.index');
+        return Redirect::route('maintenance.view');
     }
 }

@@ -15,7 +15,7 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
-  <Toaster />
+  <Toaster :richColors="true" />
   <div>
     <div class="flex min-h-screen flex-col bg-gray-100 dark:bg-gray-900">
       <nav
@@ -38,20 +38,20 @@ const showingNavigationDropdown = ref(false);
                   Dashboard
                 </NavLink>
                 <NavLink
-                  :href="route('vehicle.index')"
-                  :active="route().current('vehicle.index')"
+                  :href="route('vehicle.view')"
+                  :active="route().current('vehicle.view')"
                 >
                   Vehicle
                 </NavLink>
                 <NavLink
-                  :href="route('booking.index')"
-                  :active="route().current('booking.index')"
+                  :href="route('booking.view')"
+                  :active="route().current('booking.view')"
                 >
                   Booking
                 </NavLink>
                 <NavLink
-                  :href="route('maintenance.index')"
-                  :active="route().current('maintenance.index')"
+                  :href="route('maintenance.view')"
+                  :active="route().current('maintenance.view')"
                 >
                   Maintenance
                 </NavLink>

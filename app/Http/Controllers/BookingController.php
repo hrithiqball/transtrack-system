@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateBookingRequest;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Models\Booking;
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class BookingController extends Controller
 {
-    public function index(): Response
+    public function view(): Response
     {
         return Inertia::render('Booking/BookingDashboard', [
             'bookings' => Booking::all(),
@@ -21,25 +21,10 @@ class BookingController extends Controller
         ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(CreateBookingRequest $request): RedirectResponse
     {
-        $request->validate([
-            'start_date' => ['required', 'date'],
-            'end_date' => ['required', 'date'],
-            'vehicle_id' => ['required', 'int'],
-            'booked_by' => ['required', 'int'],
-            'notes' => ['nullable', 'string', 'max:255'],
-        ]);
+        Booking::create($request->validated());
 
-        Booking::create([
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'vehicle_id' => $request->vehicle_id,
-            'booked_by' => $request->booked_by,
-            'notes' => $request->notes ?: null,
-            'status' => 'Pending'
-        ]);
-
-        return Redirect::route('booking.index');
+        return Redirect::route('booking.view');
     }
 }

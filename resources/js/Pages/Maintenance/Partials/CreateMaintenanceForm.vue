@@ -18,6 +18,14 @@ import {
   type DateValue,
   getLocalTimeZone,
 } from '@internationalized/date';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/Components/ui/select';
 import { toast } from 'vue-sonner';
 
 const df = new DateFormatter('en-MY', {
@@ -25,11 +33,12 @@ const df = new DateFormatter('en-MY', {
 });
 
 const props = defineProps<{ vehicleId: number }>();
-const vehicleId = props.vehicleId;
+const vehicleId = ref(props.vehicleId);
 
 const personnelList = ref<User[]>([]);
 const loading = ref(true);
 const maintenanceDateInput = ref<DateValue | null>(null);
+const selectedPersonnelId = ref<string | undefined>(undefined);
 
 onMounted(() => {
   fetchPersonnel();
@@ -51,23 +60,33 @@ const fetchPersonnel = async () => {
 };
 
 const form = useForm({
-  vehicle_id: vehicleId,
+  vehicle_id: '',
   maintenance_date: '',
   serviced_by: '',
   remarks: '',
 });
 
 const createMaintenance = () => {
+  form.vehicle_id = vehicleId.value.toString();
+
   if (!maintenanceDateInput.value) {
-    console.log('maintenanceDateInput.value is not defined');
+    toast.error('Maintenance date is required');
     return;
   }
-  toast.info('Maintenance date is not defined');
+
+  if (!selectedPersonnelId.value) {
+    toast.error('Personnel is required');
+    return;
+  }
+
+  form.serviced_by = selectedPersonnelId.value;
   form.maintenance_date = maintenanceDateInput.value
     ?.toDate(getLocalTimeZone())
     .toISOString()
     .slice(0, 19)
     .replace('T', ' ');
+
+  console.log('form', form);
 
   form.post(route('maintenance.store'));
 };
@@ -102,6 +121,29 @@ const createMaintenance = () => {
             <Calendar v-model="maintenanceDateInput" />
           </PopoverContent>
         </Popover>
+      </div>
+
+      <div>
+        <Label>Vehicle</Label>
+        <Select v-model="selectedPersonnelId">
+          <SelectTrigger>
+            <SelectValue placeholder="Select maintenance personnel" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup v-if="personnelList.length > 0">
+              <SelectItem
+                v-for="personnel in personnelList"
+                :key="personnel.id"
+                :value="personnel.id.toString()"
+              >
+                {{ personnel.name }}
+              </SelectItem>
+            </SelectGroup>
+            <template v-else>
+              <div class="m-4">No personnel found</div>
+            </template>
+          </SelectContent>
+        </Select>
       </div>
 
       <div>

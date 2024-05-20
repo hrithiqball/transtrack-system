@@ -14,7 +14,7 @@ use Inertia\Response;
 class VehicleController extends Controller
 {
     // View
-    public function index(): Response
+    public function view(): Response
     {
         return Inertia::render('Vehicle/VehicleDashboard', [
             'vehicles' => Vehicle::all(),
@@ -74,7 +74,7 @@ class VehicleController extends Controller
             'photo' => $request->hasFile('photo') ? $photoPath : null
         ]);
 
-        return Redirect::route('vehicle.index');
+        return Redirect::route('vehicle.view');
     }
 
     public function update(UpdateVehicleRequest $request, int $id)
@@ -82,7 +82,7 @@ class VehicleController extends Controller
         $vehicle = Vehicle::find($id);
         $vehicle->update($request->validated());
 
-        return redirect()->route('vehicle.index');
+        return redirect()->route('vehicle.view');
     }
 
     public function destroy(int $id)
@@ -90,6 +90,6 @@ class VehicleController extends Controller
         $vehicle = Vehicle::findOrFail($id);
         $vehicle->delete();
 
-        return Redirect::route('vehicle.index');
+        return Redirect::route('vehicle.view');
     }
 }

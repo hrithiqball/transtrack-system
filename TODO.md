@@ -1,5 +1,5 @@
 TODO
 
 - only fleet manager can create, update, delete vehicle
-- create select option for personnel in maintenance creation
-- create select option for vehicle in maintenance creation
+- update view of vehicle page
+- booking page have 2 tabs: book vehicle for all, approve booking for fleet manager
