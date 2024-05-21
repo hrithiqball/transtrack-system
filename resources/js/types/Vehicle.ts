@@ -1,3 +1,5 @@
+import { Maintenance } from './Maintenance';
+
 export type Vehicle = {
   id: number;
   brand: string;
@@ -5,8 +7,7 @@ export type Vehicle = {
   year: number;
   plateNumber: string;
   color: string;
-  lastMaintenanceDate: Date;
-  nextMaintenanceDate: Date;
+  maintenances?: Maintenance[];
   status: string;
   latitude: number;
   longitude: number;

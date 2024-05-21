@@ -19,7 +19,7 @@ class Maintenance extends Model
         return $this->belongsTo(User::class, 'serviced_by');
     }
 
-    public function toViewObject()
+    public function maintenanceDto()
     {
         return [
             'id' => $this->id,

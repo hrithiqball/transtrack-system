@@ -16,7 +16,7 @@ class BookingController extends Controller
     public function view(): Response
     {
         return Inertia::render('Booking/BookingDashboard', [
-            'bookings' => Booking::all()->map->toViewObject(),
+            'bookings' => Booking::all()->map->bookingDto(),
             'vehicles' => Vehicle::all()
         ]);
     }

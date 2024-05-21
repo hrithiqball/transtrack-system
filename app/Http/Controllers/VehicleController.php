@@ -16,15 +16,16 @@ class VehicleController extends Controller
     public function view(): Response
     {
         return Inertia::render('Vehicle/VehicleDashboard', [
-            'vehicles' => Vehicle::all()->map->toViewObject(),
+            'vehicles' => Vehicle::all()->map->vehicleDto(),
         ]);
     }
 
     public function detail(int $id)
     {
-        $vehicle = Vehicle::find($id);
+        $vehicle = Vehicle::with('maintenances')->findOrFail($id);
+
         return Inertia::render('Vehicle/VehicleDetail', [
-            'vehicle' => $vehicle,
+            'vehicle' => $vehicle->vehicleDto(),
         ]);
     }
 
@@ -32,7 +33,7 @@ class VehicleController extends Controller
     {
         $vehicle = Vehicle::find($id);
         return Inertia::render('Vehicle/VehicleUpdate', [
-            'vehicle' => $vehicle,
+            'vehicle' => $vehicle->vehicleDto(),
         ]);
     }
 

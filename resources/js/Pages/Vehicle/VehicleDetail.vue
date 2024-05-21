@@ -17,7 +17,7 @@ const vehicle = usePage().props.vehicle as Vehicle;
         <div
           class="overflow-hidden bg-white p-4 shadow-sm dark:bg-gray-800 sm:rounded-lg"
         >
-          <div class="flex items-center justify-center">
+          <div class="flex flex-col items-center justify-center space-y-4">
             <img
               v-if="vehicle.photo"
               :src="`/storage/${vehicle.photo}`"
@@ -25,8 +25,17 @@ const vehicle = usePage().props.vehicle as Vehicle;
               class="h-60 w-96 bg-red-400 object-contain"
             />
             <template v-else>
-              <div>no pic</div>
+              <div class="rounded-lg border border-dashed border-gray-300 p-4">
+                No photo uploaded
+              </div>
             </template>
+            <div
+              class="rounded-md border-2 border-solid border-white bg-black px-4 py-1 text-white"
+            >
+              <span class="text-2xl font-semibold">
+                {{ vehicle.plateNumber }}
+              </span>
+            </div>
           </div>
         </div>
       </div>

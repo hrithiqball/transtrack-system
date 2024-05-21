@@ -27,8 +27,6 @@ class CreateVehicleRequest extends FormRequest
             'plate_number' => ['nullable', 'string', 'max:255'],
             'color' => ['nullable', 'string', 'max:255'],
             'year' => ['nullable', 'int'],
-            'last_maintenance_date' => ['nullable', 'date'],
-            'next_maintenance_date' => ['nullable', 'date'],
             'status' => ['nullable', 'string', 'max:255'],
             'latitude' => ['nullable', 'regex:/^[-]?([0-8]?[0-9]|90)\.[0-9]{1,6}$/'],
             'longitude' => ['nullable', 'regex:/^[-]?((1[0-7][0-9])|([0-9]?[0-9]))\.[0-9]{1,6}$/'],

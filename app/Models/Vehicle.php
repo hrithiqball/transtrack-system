@@ -4,12 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Maintenance;
 
 class Vehicle extends Model
 {
     use HasFactory;
 
-    public function toViewObject()
+    public function maintenances()
+    {
+        return $this->hasMany(Maintenance::class);
+    }
+
+    public function vehicleDto()
     {
         return [
             'id' => $this->id,
@@ -18,8 +24,7 @@ class Vehicle extends Model
             'plateNumber' => $this->plate_number,
             'color' => $this->color,
             'year' => $this->year,
-            'lastMaintenanceDate' => $this->last_maintenance_date,
-            'nextMaintenanceDate' => $this->next_maintenance_date,
+            'maintenances' => $this->maintenances->map->maintenanceDto(),
             'status' => $this->status,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
@@ -33,8 +38,6 @@ class Vehicle extends Model
         'plate_number',
         'color',
         'year',
-        'last_maintenance_date',
-        'next_maintenance_date',
         'status',
         'latitude',
         'longitude',

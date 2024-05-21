@@ -19,7 +19,7 @@ class Booking extends Model
         return $this->belongsTo(User::class, 'booked_by');
     }
 
-    public function toViewObject()
+    public function bookingDto()
     {
         return [
             'id' => $this->id,
