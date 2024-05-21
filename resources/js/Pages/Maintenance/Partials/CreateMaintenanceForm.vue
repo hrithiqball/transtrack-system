@@ -1,23 +1,19 @@
 <script setup lang="ts">
-import { User } from '@/types';
-import { useForm } from '@inertiajs/vue3';
-import { Button } from '@/Components/ui/button';
-import { onMounted, ref } from 'vue';
 import { CalendarIcon, LoaderCircle } from 'lucide-vue-next';
+import { Calendar } from '@/Components/ui/calendar';
+import { Button } from '@/Components/ui/button';
 import { Label } from '@/Components/ui/label';
 import { Input } from '@/Components/ui/input';
-import { Calendar } from '@/Components/ui/calendar';
+import { useForm } from '@inertiajs/vue3';
+import { onMounted, ref } from 'vue';
+import { toast } from 'vue-sonner';
+import { cn } from '@/lib/utils';
+import { User } from '@/types';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/Components/ui/popover';
-import { cn } from '@/lib/utils';
-import {
-  DateFormatter,
-  type DateValue,
-  getLocalTimeZone,
-} from '@internationalized/date';
 import {
   Select,
   SelectContent,
@@ -26,7 +22,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/Components/ui/select';
-import { toast } from 'vue-sonner';
+import {
+  type DateValue,
+  DateFormatter,
+  getLocalTimeZone,
+} from '@internationalized/date';
 
 const df = new DateFormatter('en-MY', {
   dateStyle: 'long',
@@ -85,8 +85,6 @@ const createMaintenance = () => {
     .toISOString()
     .slice(0, 19)
     .replace('T', ' ');
-
-  console.log('form', form);
 
   form.post(route('maintenance.store'));
 };

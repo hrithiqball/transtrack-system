@@ -2,7 +2,8 @@ import { User } from '.';
 import { Vehicle } from './Vehicle';
 
 export type Maintenance = {
-  maintenanceDate: Date;
+  id: number;
+  maintenanceDate: string;
   servicedBy: User;
   vehicle: Vehicle;
   remarks: string;

@@ -15,13 +15,7 @@ class MaintenanceController extends Controller
 {
     public function view(): Response
     {
-        $maintenances = Maintenance::with(['vehicle', 'servicedBy'])->get()->map(function ($maintenance) {
-            return [
-                'maintenanceDate' => $maintenance->maintenance_date,
-                'vehicle' => $maintenance->vehicle,
-                'servicedBy' => $maintenance->servicedBy,
-            ];
-        });
+        $maintenances = Maintenance::with(['vehicle', 'servicedBy'])->get()->map->toViewObject();
 
         return Inertia::render('Maintenance/MaintenanceDashboard', [
             'maintenances' => $maintenances,

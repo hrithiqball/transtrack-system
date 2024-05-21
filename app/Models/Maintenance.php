@@ -19,6 +19,17 @@ class Maintenance extends Model
         return $this->belongsTo(User::class, 'serviced_by');
     }
 
+    public function toViewObject()
+    {
+        return [
+            'id' => $this->id,
+            'maintenanceDate' => $this->maintenance_date,
+            'vehicle' => $this->vehicle,
+            'servicedBy' => $this->servicedBy,
+            'remarks' => $this->remarks
+        ];
+    }
+
     protected $fillable = [
         'maintenance_date',
         'serviced_by',
