@@ -12,7 +12,7 @@ const markerList = vehicles.map((vehicle) => ({
     lng: vehicle.longitude,
   },
   vehicle: {
-    plateNumber: vehicle.plate_number,
+    plateNumber: vehicle.plateNumber,
     brand: vehicle.brand,
     model: vehicle.model,
     color: vehicle.color,

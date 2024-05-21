@@ -19,6 +19,19 @@ class Booking extends Model
         return $this->belongsTo(User::class, 'booked_by');
     }
 
+    public function toViewObject()
+    {
+        return [
+            'id' => $this->id,
+            'startDate' => $this->start_date,
+            'endDate' => $this->end_date,
+            'vehicle' => $this->vehicle,
+            'bookedBy' => $this->bookedBy,
+            'status' => $this->status,
+            'notes' => $this->notes
+        ];
+    }
+
     protected $fillable = [
         'start_date',
         'end_date',

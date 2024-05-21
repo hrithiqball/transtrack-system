@@ -1,9 +1,12 @@
+import { User } from '.';
+import { Vehicle } from './Vehicle';
+
 export type Booking = {
   id: number;
-  start_date: Date;
-  end_date: Date;
-  vehicle_id: number;
-  user_id: number;
+  startDate: Date;
+  endDate: Date;
+  vehicle: Vehicle;
+  bookedBy: User;
   notes: string;
   status: string;
 };

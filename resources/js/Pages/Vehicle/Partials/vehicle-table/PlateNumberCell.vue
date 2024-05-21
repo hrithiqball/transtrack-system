@@ -10,6 +10,6 @@ defineProps<{ vehicle: Vehicle }>();
     class="cursor-pointer underline-offset-4 hover:text-blue-500 hover:underline"
     :href="route('vehicle.detail', { id: vehicle.id })"
   >
-    {{ vehicle.plate_number }}
+    {{ vehicle.plateNumber }}
   </Link>
 </template>

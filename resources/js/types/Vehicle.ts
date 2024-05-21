@@ -3,10 +3,10 @@ export type Vehicle = {
   brand: string;
   model: string;
   year: number;
-  plate_number: string;
+  plateNumber: string;
   color: string;
-  last_maintenance_date: Date;
-  next_maintenance_date: Date;
+  lastMaintenanceDate: Date;
+  nextMaintenanceDate: Date;
   status: string;
   latitude: number;
   longitude: number;

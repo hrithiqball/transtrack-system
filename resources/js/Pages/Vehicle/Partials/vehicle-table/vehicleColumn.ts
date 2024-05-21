@@ -29,7 +29,7 @@ export const columns: ColumnDef<Vehicle>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: 'plate_number',
+    accessorKey: 'plateNumber',
     header: ({ column }) => {
       return h(
         Button,

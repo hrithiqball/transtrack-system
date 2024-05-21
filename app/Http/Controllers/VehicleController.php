@@ -7,7 +7,6 @@ use App\Http\Requests\CreateVehicleRequest;
 use App\Http\Requests\UpdateVehicleRequest;
 use App\Models\Vehicle;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -17,7 +16,7 @@ class VehicleController extends Controller
     public function view(): Response
     {
         return Inertia::render('Vehicle/VehicleDashboard', [
-            'vehicles' => Vehicle::all(),
+            'vehicles' => Vehicle::all()->map->toViewObject(),
         ]);
     }
 

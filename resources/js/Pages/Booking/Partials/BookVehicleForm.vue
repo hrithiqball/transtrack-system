@@ -131,7 +131,7 @@ const createBooking = () => {
               :key="vehicle.id"
               :value="vehicle.id.toString()"
             >
-              {{ vehicle.plate_number }}
+              {{ vehicle.plateNumber }}
             </SelectItem>
           </SelectGroup>
         </SelectContent>

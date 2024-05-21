@@ -17,7 +17,7 @@ const plateNumberInput = ref<HTMLInputElement | null>(null);
 const form: InertiaForm<{
   plate_number: string;
 }> = useForm({
-  plate_number: vehicle.plate_number,
+  plate_number: vehicle.plateNumber,
 });
 
 const updateVehicle = () => {

@@ -24,7 +24,7 @@ const formattedDate = computed(() => {
           class="rounded-md border-2 border-solid border-white bg-black px-4 text-white"
         >
           <span>
-            {{ props.maintenance.vehicle.plate_number }}
+            {{ props.maintenance.vehicle.plateNumber }}
           </span>
         </div>
         <div class="flex space-x-2">
