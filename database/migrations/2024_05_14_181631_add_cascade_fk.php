@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('bookings', function (Blueprint $table) {
-            if (Schema::hasColumn('bookings', 'bookings_vehicle_id_foreign')) {
+            if (Schema::hasColumn('bookings', 'vehicle_id')) {
                 $table->dropForeign(['vehicle_id']);
             }
 
