@@ -2,8 +2,10 @@
 import { usePage } from '@inertiajs/vue3';
 import { GoogleMap, Marker, InfoWindow } from 'vue3-google-map';
 import { Vehicle } from '@/types/Vehicle';
+import { ref } from 'vue';
 
 const center = { lat: 3.06834, lng: 101.506318 };
+const apiKey = ref(import.meta.env.VITE_GOOGLE_MAP_API);
 const vehicles = usePage().props.vehicles as unknown as Vehicle[];
 const markerList = vehicles.map((vehicle) => ({
   id: vehicle.id,
@@ -21,12 +23,7 @@ const markerList = vehicles.map((vehicle) => ({
 </script>
 
 <template>
-  <GoogleMap
-    api-key="AIzaSyAlOC3BikppdLBZA1yP2akQEmAhQok9F9Y"
-    :center="center"
-    :zoom="15"
-    class="h-[500px] w-full"
-  >
+  <GoogleMap :api-key :center="center" :zoom="15" class="h-[500px] w-full">
     <Marker
       v-for="marker of markerList"
       :key="marker.id"
