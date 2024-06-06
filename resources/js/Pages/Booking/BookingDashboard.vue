@@ -77,11 +77,24 @@ const handleOpenDialog = (booking: Booking) => {
                   <CardDescription> View your bookings here. </CardDescription>
                 </CardHeader>
                 <CardContent class="space-y-2">
-                  <template v-if="bookings.length > 0">
-                    <div v-for="booking in bookings" :key="booking.id">
-                      {{ booking.status }}
-                    </div>
-                  </template>
+                  <Table v-if="bookings.length > 0">
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>ID</TableHead>
+                        <TableHead>Vehicle Plate Number</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead>Notes</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      <TableRow v-for="booking in bookings" :key="booking.id">
+                        <TableCell>{{ booking.id }}</TableCell>
+                        <TableCell>{{ booking.vehicle.plateNumber }}</TableCell>
+                        <TableCell>{{ booking.status }}</TableCell>
+                        <TableCell>{{ booking.notes }}</TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
                   <template v-else>
                     <div class="text-center text-gray-500 dark:text-gray-400">
                       No bookings found
@@ -141,6 +154,44 @@ const handleOpenDialog = (booking: Booking) => {
                           {{ currentBooking?.vehicle.plateNumber }}
                         </DialogDescription>
                       </DialogHeader>
+                      <Table>
+                        <TableBody>
+                          <TableRow>
+                            <TableCell>Booking ID</TableCell>
+                            <TableCell>{{ currentBooking?.id }}</TableCell>
+                          </TableRow>
+                          <TableRow>
+                            <TableCell>Start Date</TableCell>
+                            <TableCell>{{
+                              currentBooking?.startDate
+                            }}</TableCell>
+                          </TableRow>
+                          <TableRow>
+                            <TableCell>End Date</TableCell>
+                            <TableCell>{{ currentBooking?.endDate }}</TableCell>
+                          </TableRow>
+                          <TableRow>
+                            <TableCell>Plate Number</TableCell>
+                            <TableCell>
+                              {{ currentBooking?.vehicle.plateNumber }}
+                            </TableCell>
+                          </TableRow>
+                          <TableRow>
+                            <TableCell>Booked By</TableCell>
+                            <TableCell>
+                              {{ currentBooking?.bookedBy.name }}
+                            </TableCell>
+                          </TableRow>
+                          <TableRow>
+                            <TableCell>Notes</TableCell>
+                            <TableCell>{{ currentBooking?.notes }}</TableCell>
+                          </TableRow>
+                        </TableBody>
+                      </Table>
+                      <div class="flex flex-row-reverse gap-4">
+                        <Button>Approve</Button>
+                        <Button variant="destructive">Reject</Button>
+                      </div>
                     </DialogContent>
                   </Dialog>
                 </CardContent>
