@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateBookingRequest;
+use App\Http\Requests\UpdateBookingRequest;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Models\Booking;
@@ -24,6 +25,14 @@ class BookingController extends Controller
     public function store(CreateBookingRequest $request): RedirectResponse
     {
         Booking::create($request->validated());
+
+        return Redirect::route('booking.view');
+    }
+
+    public function update(UpdateBookingRequest $request, int $id)
+    {
+        $booking = Booking::find($id);
+        $booking->update($request->validated());
 
         return Redirect::route('booking.view');
     }

@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/booking', [BookingController::class, 'view'])->name('booking.view');
     Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
+    Route::put('/booking/{booking}', [BookingController::class, 'update'])->name('booking.update');
 
     Route::get('/maintenance', [MaintenanceController::class, 'view'])->name('maintenance.view');
     Route::post('/maintenance', [MaintenanceController::class, 'store'])->name('maintenance.store');

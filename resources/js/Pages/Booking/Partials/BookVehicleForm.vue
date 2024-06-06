@@ -83,7 +83,6 @@ const createBooking = () => {
     .replace('T', ' ');
   form.vehicle_id = selectedVehicleId.value;
 
-  console.log(form);
   form.post(route('booking.store'), {
     preserveScroll: true,
     onSuccess: () => {
