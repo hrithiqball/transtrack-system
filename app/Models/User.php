@@ -45,4 +45,17 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function userDto()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'role' => $this->role,
+            'emailVerifiedAt' => $this->email_verified_at,
+            'createdAt' => $this->created_at,
+            'updatedAt' => $this->updated_at
+        ];
+    }
 }

@@ -25,8 +25,8 @@ class Booking extends Model
             'id' => $this->id,
             'startDate' => $this->start_date,
             'endDate' => $this->end_date,
-            'vehicle' => $this->vehicle,
-            'bookedBy' => $this->bookedBy,
+            'vehicle' => $this->vehicle->vehicleDto(),
+            'bookedBy' => $this->bookedBy->userDto(),
             'status' => $this->status,
             'notes' => $this->notes
         ];

@@ -122,7 +122,7 @@ const createMaintenance = () => {
       </div>
 
       <div>
-        <Label>Vehicle</Label>
+        <Label>Personnel</Label>
         <Select v-model="selectedPersonnelId">
           <SelectTrigger>
             <SelectValue placeholder="Select maintenance personnel" />
