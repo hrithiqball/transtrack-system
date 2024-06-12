@@ -22,6 +22,15 @@ class MaintenanceController extends Controller
         ]);
     }
 
+    public function detail(int $id)
+    {
+        $maintenance = Maintenance::with(['vehicle', 'servicedBy'])->findOrFail($id);
+
+        return Inertia::render('Maintenance/MaintenanceDetail', [
+            'maintenance' => $maintenance->maintenanceDto(),
+        ]);
+    }
+
     public function store(CreateMaintenanceRequest $request): RedirectResponse
     {
         Maintenance::create($request->validated());

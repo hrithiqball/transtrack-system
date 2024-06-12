@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
@@ -19,13 +20,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard/MainDashboard', [
-        'vehicles' => \App\Models\Vehicle::all()
-    ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'view'])->name('dashboard');
+
     Route::get('/admin', [ProfileController::class, 'admin'])->name('admin.index')->middleware(AdminMiddleware::class);
     Route::put('/admin/role/{id}', [ProfileController::class, 'update_role'])->name('admin.update-role');
 
@@ -47,6 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/booking/{booking}', [BookingController::class, 'update'])->name('booking.update');
 
     Route::get('/maintenance', [MaintenanceController::class, 'view'])->name('maintenance.view');
+    Route::get('/maintenance/{id}', [MaintenanceController::class, 'detail'])->name('maintenance.detail');
     Route::post('/maintenance', [MaintenanceController::class, 'store'])->name('maintenance.store');
 });
 

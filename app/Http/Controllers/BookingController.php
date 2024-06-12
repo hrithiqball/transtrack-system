@@ -18,7 +18,7 @@ class BookingController extends Controller
     {
         return Inertia::render('Booking/BookingDashboard', [
             'bookings' => Booking::all()->map->bookingDto(),
-            'vehicles' => Vehicle::all()
+            'vehicles' => Vehicle::all()->map->vehicleDto()
         ]);
     }
 

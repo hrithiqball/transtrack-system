@@ -24,8 +24,8 @@ class Maintenance extends Model
         return [
             'id' => $this->id,
             'maintenanceDate' => $this->maintenance_date,
-            'vehicle' => $this->vehicle,
-            'servicedBy' => $this->servicedBy,
+            'vehicle' => $this->vehicle->vehicleWoMaintenanceDto(),
+            'servicedBy' => $this->servicedBy->userDto(),
             'remarks' => $this->remarks
         ];
     }

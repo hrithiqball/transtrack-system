@@ -86,16 +86,16 @@ const table = useVueTable({
         class="max-w-sm"
         placeholder="Search plate number..."
         :model-value="
-          table.getColumn('plate_number')?.getFilterValue() as string
+          table.getColumn('plateNumber')?.getFilterValue() as string
         "
         @update:model-value="
-          table.getColumn('plate_number')?.setFilterValue($event)
+          table.getColumn('plateNumber')?.setFilterValue($event)
         "
       />
       <Button
-        v-if="table.getColumn('plate_number')?.getFilterValue()"
+        v-if="table.getColumn('plateNumber')?.getFilterValue()"
         size="icon"
-        @click="table.getColumn('plate_number')?.setFilterValue('')"
+        @click="table.getColumn('plateNumber')?.setFilterValue('')"
       >
         <X class="ml-2 size-4" />
       </Button>

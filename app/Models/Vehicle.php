@@ -32,6 +32,22 @@ class Vehicle extends Model
         ];
     }
 
+    public function vehicleWoMaintenanceDto()
+    {
+        return [
+            'id' => $this->id,
+            'brand' => $this->brand,
+            'model' => $this->model,
+            'plateNumber' => $this->plate_number,
+            'color' => $this->color,
+            'year' => $this->year,
+            'status' => $this->status,
+            'latitude' => $this->latitude,
+            'longitude' => $this->longitude,
+            'photo' => $this->photo
+        ];
+    }
+
     protected $fillable = [
         'brand',
         'model',

@@ -32,8 +32,10 @@ import { ref } from 'vue';
 import { toast } from 'vue-sonner';
 import BookingGeneralTable from './Partials/BookingGeneralTable.vue';
 import BookingApprovalTable from './Partials/BookingApprovalTable.vue';
+import { Vehicle } from '@/types/Vehicle';
 
 const bookings = usePage().props.bookings as Booking[];
+const vehicles = usePage().props.vehicles as Vehicle[];
 const openDetails = ref(false);
 const currentBooking = ref<Booking | null>(null);
 

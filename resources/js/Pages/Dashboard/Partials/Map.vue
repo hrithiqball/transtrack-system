@@ -40,9 +40,9 @@ const markerList = vehicles.map((vehicle) => ({
           </div>
           <div class="flex flex-col">
             <div class="flex items-center space-x-2">
-              <span class="text-lg font-semibold">{{
-                marker.vehicle.brand
-              }}</span>
+              <span class="text-lg font-semibold">
+                {{ marker.vehicle.brand }}
+              </span>
               <span>{{ marker.vehicle.model }}</span>
             </div>
           </div>
