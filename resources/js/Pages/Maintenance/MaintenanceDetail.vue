@@ -7,5 +7,7 @@ const maintenance = usePage().props.maintenance as Maintenance;
 </script>
 
 <template>
-  <AuthenticatedLayout> hello detail </AuthenticatedLayout>
+  <AuthenticatedLayout>
+    <button @click="console.log(maintenance)">{{ maintenance.id }}</button>
+  </AuthenticatedLayout>
 </template>

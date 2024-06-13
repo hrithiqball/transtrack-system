@@ -21,7 +21,7 @@ const vehicle = usePage().props.vehicle as Vehicle;
         <div
           class="overflow-hidden bg-white p-4 shadow-sm dark:bg-gray-800 sm:rounded-lg"
         >
-          <div class="flex items-center justify-between space-x-4 space-y-4">
+          <div className="grid grid-cols-3 gap-4 h-[250px]">
             <VehicleImageCard :photo="vehicle.photo" />
             <VehicleMapCard :lat="vehicle.latitude" :lng="vehicle.longitude" />
             <VehicleDetailsCard :vehicle />
