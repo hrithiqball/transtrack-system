@@ -18,8 +18,6 @@ const formattedDate = computed(() => {
 });
 
 const handleMaintenanceInfo = (id: number) => {
-  console.log('Maintenance info');
-
   router.visit(route('maintenance.detail', { id }));
 };
 </script>
