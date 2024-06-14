@@ -4,6 +4,8 @@ import { Maintenance } from '@/types/Maintenance';
 import { usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import { format } from 'date-fns';
+import VehicleInfoCard from '../Vehicle/Partials/VehicleInfoCard.vue';
+import ServicedByInfoCard from '../Profile/Partials/ServicedByInfoCard.vue';
 
 const maintenance = usePage().props.maintenance as Maintenance;
 const formattedDate = computed(() => {
@@ -24,9 +26,9 @@ const formattedDate = computed(() => {
         Maintenance ID: {{ maintenance.id }}
       </span>
       <div
-        class="flex size-24 flex-col items-center justify-center rounded-full bg-slate-200 p-6 dark:bg-slate-500"
+        class="flex size-24 flex-col items-center justify-center rounded-full bg-slate-200 p-6 dark:bg-slate-700"
       >
-        <span class="text-xl font-bold text-rose-500 dark:text-rose-800">
+        <span class="text-xl font-bold text-rose-500">
           {{ formattedDate.day }}
         </span>
         <span class="text-sm">{{ formattedDate.month }}</span>
@@ -34,8 +36,8 @@ const formattedDate = computed(() => {
       </div>
       <span>{{ maintenance.remarks }}</span>
       <div class="grid grid-cols-2 gap-4">
-        <div class="rounded-lg bg-red-100 p-4">TODO: vehicle info</div>
-        <div class="rounded-lg bg-red-100 p-4">TODO: serviced by info</div>
+        <VehicleInfoCard :vehicle="maintenance.vehicle" />
+        <ServicedByInfoCard :servicedBy="maintenance.servicedBy" />
       </div>
     </div>
   </AuthenticatedLayout>
