@@ -35,9 +35,15 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Update the user's profile information.
-     */
+    public function detail(int $id): Response
+    {
+        $user = User::findOrFail($id);
+
+        return Inertia::render('Profile/Detail', [
+            'user' => $user
+        ]);
+    }
+
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());

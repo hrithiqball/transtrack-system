@@ -1,16 +1,8 @@
 <script setup lang="ts">
 import { Button } from '@/Components/ui/button';
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/Components/ui/card';
-import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -18,21 +10,13 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/Components/ui/tabs';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Booking } from '@/types/Booking';
+import { Vehicle } from '@/types/Vehicle';
 import { Head, InertiaForm, useForm, usePage } from '@inertiajs/vue3';
-import BookVehicleForm from './Partials/BookVehicleForm.vue';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/Components/ui/table';
 import { ref } from 'vue';
 import { toast } from 'vue-sonner';
-import BookingGeneralTable from './Partials/BookingGeneralTable.vue';
+import BookVehicleForm from './Partials/BookVehicleForm.vue';
 import BookingApprovalTable from './Partials/BookingApprovalTable.vue';
-import { Vehicle } from '@/types/Vehicle';
+import BookingGeneralTable from './Partials/BookingGeneralTable.vue';
 
 const bookings = usePage().props.bookings as Booking[];
 const vehicles = usePage().props.vehicles as Vehicle[];

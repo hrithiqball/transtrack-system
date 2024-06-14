@@ -4,10 +4,6 @@ import { Head, usePage } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import UpdateVehicleForm from './Partials/UpdateVehicleForm.vue';
 
-defineProps<{
-  vehicle: Vehicle;
-}>();
-
 const vehicle = usePage().props.vehicle as Vehicle;
 </script>
 

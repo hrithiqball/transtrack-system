@@ -7,8 +7,6 @@ import VehicleMapCard from './Partials/VehicleMapCard.vue';
 import VehicleImageCard from './Partials/VehicleImageCard.vue';
 import VehicleMaintenanceCard from './Partials/VehicleMaintenanceCard.vue';
 
-defineProps<{ vehicle: Vehicle }>();
-
 const vehicle = usePage().props.vehicle as Vehicle;
 </script>
 

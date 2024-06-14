@@ -30,7 +30,7 @@ maintenances.forEach((maintenance) => {
   <AuthenticatedLayout>
     <div class="m-4 flex flex-1 space-x-4">
       <div
-        class="flex flex-1 flex-col space-y-4 rounded bg-white p-4 dark:bg-slate-600"
+        class="flex flex-1 flex-col space-y-4 rounded bg-white p-4 dark:bg-gray-800"
       >
         <h2 class="text-lg font-semibold underline underline-offset-4">
           Previous Maintenance
@@ -48,7 +48,7 @@ maintenances.forEach((maintenance) => {
         </div>
       </div>
       <div
-        class="flex flex-1 flex-col space-y-4 rounded bg-white p-4 dark:bg-slate-600"
+        class="flex flex-1 flex-col space-y-4 rounded bg-white p-4 dark:bg-gray-800"
       >
         <h2 class="text-lg font-semibold underline underline-offset-4">
           Today Maintenance
@@ -66,7 +66,7 @@ maintenances.forEach((maintenance) => {
         </div>
       </div>
       <div
-        class="flex flex-1 flex-col space-y-4 rounded bg-white p-4 dark:bg-slate-600"
+        class="flex flex-1 flex-col space-y-4 rounded bg-white p-4 dark:bg-gray-800"
       >
         <h2 class="text-lg font-semibold underline underline-offset-4">
           Upcoming Maintenance

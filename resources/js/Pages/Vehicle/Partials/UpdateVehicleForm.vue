@@ -7,10 +7,6 @@ import { ref } from 'vue';
 import { Label } from '@/Components/ui/label';
 import InputError from '@/Components/InputError.vue';
 
-defineProps<{
-  vehicle: Vehicle;
-}>();
-
 const vehicle = usePage().props.vehicle as Vehicle;
 const plateNumberInput = ref<HTMLInputElement | null>(null);
 

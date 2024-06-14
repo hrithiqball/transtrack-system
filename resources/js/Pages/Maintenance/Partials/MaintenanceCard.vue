@@ -25,25 +25,27 @@ const handleMaintenanceInfo = (id: number) => {
 <template>
   <Card class="cursor-pointer" @click="handleMaintenanceInfo(maintenance.id)">
     <CardHeader>
-      <div
-        class="flex items-center justify-center rounded-md border-2 border-solid border-white bg-black px-4 text-white"
-      >
-        <span class="flex flex-1 items-center justify-center">
-          {{ props.maintenance.vehicle.plateNumber }}
-        </span>
+      <div class="flex items-center justify-center">
+        <div>
+          <span
+            class="flex flex-1 items-center justify-center rounded-md border-2 border-solid border-white bg-black px-2"
+          >
+            {{ maintenance.vehicle.plateNumber }}
+          </span>
+        </div>
       </div>
     </CardHeader>
     <CardContent>
       <div class="flex flex-col space-y-4">
         <div class="flex space-x-2">
           <span class="font-semibold">
-            {{ props.maintenance.vehicle.brand }}
+            {{ maintenance.vehicle.brand }}
           </span>
-          <span class="italic">{{ props.maintenance.vehicle.model }}</span>
+          <span class="italic">{{ maintenance.vehicle.model }}</span>
         </div>
         <div>
           <span class="text-sm italic">Remarks</span>
-          <p>{{ props.maintenance.remarks }}</p>
+          <p>{{ maintenance.remarks }}</p>
         </div>
       </div>
     </CardContent>

@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', [ProfileController::class, 'admin'])->name('admin.index')->middleware(AdminMiddleware::class);
     Route::put('/admin/role/{id}', [ProfileController::class, 'update_role'])->name('admin.update-role');
 
+    Route::get('/profile/{id}', [ProfileController::class, 'detail'])->name('profile.detail');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
