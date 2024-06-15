@@ -74,19 +74,6 @@ const changeRole = (id: number, role: string) => {
                 </TableBody>
               </Table>
             </div>
-            <div>
-              <h3 class="text-lg font-semibold">Booking Request</h3>
-              <div v-if="bookings.length > 0" class="flex flex-col">
-                <div v-for="booking of bookings" :key="booking.id">
-                  {{ booking.notes }}
-                </div>
-              </div>
-              <template v-else>
-                <div class="text-center text-gray-500 dark:text-gray-400">
-                  No bookings found
-                </div>
-              </template>
-            </div>
           </div>
         </div>
       </div>
