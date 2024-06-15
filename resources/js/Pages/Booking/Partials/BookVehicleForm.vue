@@ -29,6 +29,8 @@ import { Calendar as CalendarIcon } from 'lucide-vue-next';
 import type { DateRange } from 'radix-vue';
 import { Ref, ref } from 'vue';
 
+const props = defineProps<{ vehicleId?: number; vehicles: Vehicle[] }>();
+
 const df = new DateFormatter('en-MY', {
   dateStyle: 'long',
 });
@@ -47,8 +49,9 @@ const rangeDate = ref({
     today.getDate(),
   ).add({ days: 1 }),
 }) as Ref<DateRange>;
-const vehicles = usePage().props.vehicles as unknown as Vehicle[];
-const selectedVehicleId = ref<string | undefined>(undefined);
+const selectedVehicleId = ref<string | undefined>(
+  props.vehicleId?.toString() || undefined,
+);
 
 const form = useForm({
   start_date: '',

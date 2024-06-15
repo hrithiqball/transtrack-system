@@ -85,7 +85,7 @@ const rejectBooking = () => {
               <DialogHeader>
                 <DialogTitle> Book Vehicle </DialogTitle>
               </DialogHeader>
-              <BookVehicleForm />
+              <BookVehicleForm :vehicles />
             </DialogContent>
           </Dialog>
         </div>

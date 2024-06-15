@@ -26,6 +26,7 @@ class VehicleController extends Controller
 
         return Inertia::render('Vehicle/VehicleDetail', [
             'vehicle' => $vehicle->vehicleDto(),
+            'vehicles' => Vehicle::all()->map->vehicleDto()
         ]);
     }
 

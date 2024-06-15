@@ -8,18 +8,37 @@ import {
   TableHead,
   TableCell,
 } from '@/Components/ui/table';
+import { Button } from '@/Components/ui/button';
 import { router } from '@inertiajs/vue3';
+import { ref } from 'vue';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/Components/ui/dialog';
+import CreateMaintenanceForm from '@/Pages/Maintenance/Partials/CreateMaintenanceForm.vue';
 
-defineProps<{ maintenances: Maintenance[] | undefined }>();
+defineProps<{ maintenances: Maintenance[] | undefined; vehicleId: number }>();
+const openCreateMaintenance = ref(false);
 
 const navigateToMaintenanceDetail = (id: number) => {
   router.visit(route('maintenance.detail', { id }));
+};
+
+const handleOpenCreateMaintenance = () => {
+  openCreateMaintenance.value = !openCreateMaintenance.value;
 };
 </script>
 
 <template>
   <div class="flex flex-col">
-    <span class="text-lg font-semibold">Maintenances</span>
+    <div class="flex justify-between">
+      <span class="text-lg font-semibold">Maintenances</span>
+      <Button variant="outline" @click="handleOpenCreateMaintenance()"
+        >Create Maintenance</Button
+      >
+    </div>
     <Table>
       <TableHeader>
         <TableRow>
@@ -52,5 +71,13 @@ const navigateToMaintenanceDetail = (id: number) => {
         </template>
       </TableBody>
     </Table>
+    <Dialog v-model:open="openCreateMaintenance">
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Create Maintenance</DialogTitle>
+          <CreateMaintenanceForm :vehicleId />
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
   </div>
 </template>

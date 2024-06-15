@@ -10,7 +10,7 @@ export type Vehicle = {
   color: string;
   maintenances?: Maintenance[];
   bookings?: Booking[];
-  status: string;
+  status: string | null;
   latitude: number;
   longitude: number;
   photo: string;

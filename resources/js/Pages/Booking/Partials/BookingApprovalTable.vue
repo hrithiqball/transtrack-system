@@ -104,7 +104,7 @@ const rejectBooking = () => {
             <TableCell>{{ booking.id }}</TableCell>
             <TableCell>{{ booking.vehicle.plateNumber }}</TableCell>
             <TableCell>{{ booking.status }}</TableCell>
-            <!-- maybe in a new component -->
+            <!-- TODO: maybe in a new component -->
             <TableCell>{{ booking.notes }}</TableCell>
           </TableRow>
         </TableBody>
