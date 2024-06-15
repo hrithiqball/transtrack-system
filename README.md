@@ -109,3 +109,9 @@ php artisan migrate
 ```bash
 php artisan db:seed
 ```
+
+## To link storage with file system
+
+```bash
+php artisan storage:link
+```
