@@ -1,5 +1,13 @@
 <script setup lang="ts">
 import InputLabel from '@/Components/InputLabel.vue';
+import { Button } from '@/Components/ui/button';
+import { Label } from '@/Components/ui/label';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/Components/ui/popover';
+import { RangeCalendar } from '@/Components/ui/range-calendar';
 import {
   Select,
   SelectContent,
@@ -8,26 +16,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/Components/ui/select';
+import { Textarea } from '@/Components/ui/textarea';
+import { cn } from '@/lib/utils';
 import { Vehicle } from '@/types/Vehicle';
 import { useForm, usePage } from '@inertiajs/vue3';
-import { Ref, ref } from 'vue';
-import { Calendar as CalendarIcon } from 'lucide-vue-next';
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/Components/ui/popover';
-import { cn } from '@/lib/utils';
-import {
+  CalendarDate,
   DateFormatter,
   getLocalTimeZone,
-  CalendarDate,
 } from '@internationalized/date';
-import { Button } from '@/Components/ui/button';
-import { RangeCalendar } from '@/Components/ui/range-calendar';
+import { Calendar as CalendarIcon } from 'lucide-vue-next';
 import type { DateRange } from 'radix-vue';
-import { Label } from '@/Components/ui/label';
-import { Textarea } from '@/Components/ui/textarea';
+import { Ref, ref } from 'vue';
 
 const df = new DateFormatter('en-MY', {
   dateStyle: 'long',

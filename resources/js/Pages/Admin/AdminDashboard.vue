@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import { Head, usePage } from '@inertiajs/vue3';
 import { Button } from '@/Components/ui/button';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Booking } from '@/types/Booking';
-import { User } from '@/types';
 import {
   DropdownMenu,
-  DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuTrigger,
 } from '@/Components/ui/dropdown-menu';
-import { Table, TableBody, TableRow, TableCell } from '@/Components/ui/table';
-import { router } from '@inertiajs/vue3';
+import { Table, TableBody, TableCell, TableRow } from '@/Components/ui/table';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { User } from '@/types';
+import { Booking } from '@/types/Booking';
+import { Head, router, usePage } from '@inertiajs/vue3';
 
 const bookings = usePage().props.bookings as Booking[];
 const users = usePage().props.users as User[];

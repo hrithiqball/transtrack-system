@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Input } from '@/Components/ui/input';
+import InputError from '@/Components/InputError.vue';
 import { Button } from '@/Components/ui/button';
+import { Input } from '@/Components/ui/input';
+import { Label } from '@/Components/ui/label';
 import { Vehicle } from '@/types/Vehicle';
 import { InertiaForm, useForm, usePage } from '@inertiajs/vue3';
 import { ref } from 'vue';
-import { Label } from '@/Components/ui/label';
-import InputError from '@/Components/InputError.vue';
 
 const vehicle = usePage().props.vehicle as Vehicle;
 const plateNumberInput = ref<HTMLInputElement | null>(null);

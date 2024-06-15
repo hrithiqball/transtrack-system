@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { MoreHorizontal } from 'lucide-vue-next';
+import { Button } from '@/Components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/Components/ui/dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/Components/ui/dropdown-menu';
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/Components/ui/dialog';
-import { Button } from '@/Components/ui/button';
-import { router } from '@inertiajs/vue3';
-import { Vehicle } from '@/types/Vehicle';
 import CreateMaintenanceForm from '@/Pages/Maintenance/Partials/CreateMaintenanceForm.vue';
+import { Vehicle } from '@/types/Vehicle';
+import { router } from '@inertiajs/vue3';
+import { MoreHorizontal } from 'lucide-vue-next';
 import { ref } from 'vue';
 
 defineProps<{

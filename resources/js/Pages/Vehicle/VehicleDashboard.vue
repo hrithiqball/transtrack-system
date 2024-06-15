@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, usePage } from '@inertiajs/vue3';
-import AddVehicleForm from './Partials/AddVehicleForm.vue';
 import { Button } from '@/Components/ui/button';
 import {
   Dialog,
@@ -10,10 +7,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/Components/ui/dialog';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Vehicle } from '@/types/Vehicle';
+import { Head, usePage } from '@inertiajs/vue3';
+import { onMounted, ref } from 'vue';
+import AddVehicleForm from './Partials/AddVehicleForm.vue';
 import DataTable from './Partials/vehicle-table/VehicleTable.vue';
 import { columns } from './Partials/vehicle-table/vehicleColumn';
-import { onMounted, ref } from 'vue';
 
 const vehicles = usePage().props.vehicles as Vehicle[];
 const data = ref<Vehicle[]>([]);

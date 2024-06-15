@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { usePage } from '@inertiajs/vue3';
-import { GoogleMap, Marker, InfoWindow } from 'vue3-google-map';
 import { Vehicle } from '@/types/Vehicle';
+import { usePage } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import { GoogleMap, InfoWindow, Marker } from 'vue3-google-map';
 
 const center = { lat: 3.06834, lng: 101.506318 };
 const apiKey = ref(import.meta.env.VITE_GOOGLE_MAP_API);

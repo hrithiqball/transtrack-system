@@ -2,10 +2,10 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Maintenance } from '@/types/Maintenance';
 import { usePage } from '@inertiajs/vue3';
-import { computed } from 'vue';
 import { format } from 'date-fns';
-import VehicleInfoCard from '../Vehicle/Partials/VehicleInfoCard.vue';
+import { computed } from 'vue';
 import ServicedByInfoCard from '../Profile/Partials/ServicedByInfoCard.vue';
+import VehicleInfoCard from '../Vehicle/Partials/VehicleInfoCard.vue';
 
 const maintenance = usePage().props.maintenance as Maintenance;
 const formattedDate = computed(() => {

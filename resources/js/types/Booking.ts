@@ -3,8 +3,8 @@ import { Vehicle } from './Vehicle';
 
 export type Booking = {
   id: number;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
   vehicle: Vehicle;
   bookedBy: User;
   notes: string;

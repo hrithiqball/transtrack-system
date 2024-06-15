@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { Card, CardContent, CardHeader } from '@/Components/ui/card';
 import { Maintenance } from '@/types/Maintenance';
+import { router } from '@inertiajs/vue3';
 import { format } from 'date-fns';
 import { computed } from 'vue';
-import { Card, CardContent, CardHeader } from '@/Components/ui/card';
-import { router } from '@inertiajs/vue3';
 
 const props = defineProps<{ maintenance: Maintenance }>();
 

@@ -32,6 +32,18 @@ class Booking extends Model
         ];
     }
 
+    public function bookingWoVehicleDto()
+    {
+        return [
+            'id' => $this->id,
+            'startDate' => $this->start_date,
+            'endDate' => $this->end_date,
+            'bookedBy' => $this->bookedBy->userDto(),
+            'status' => $this->status,
+            'notes' => $this->notes
+        ];
+    }
+
     protected $fillable = [
         'start_date',
         'end_date',

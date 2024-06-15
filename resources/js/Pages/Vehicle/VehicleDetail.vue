@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Vehicle } from '@/types/Vehicle';
-import { usePage, Head } from '@inertiajs/vue3';
+import { Head, usePage } from '@inertiajs/vue3';
 import VehicleDetailsCard from './Partials/VehicleDetailsCard.vue';
-import VehicleMapCard from './Partials/VehicleMapCard.vue';
 import VehicleImageCard from './Partials/VehicleImageCard.vue';
 import VehicleMaintenanceCard from './Partials/VehicleMaintenanceCard.vue';
+import VehicleMapCard from './Partials/VehicleMapCard.vue';
 
 const vehicle = usePage().props.vehicle as Vehicle;
 </script>

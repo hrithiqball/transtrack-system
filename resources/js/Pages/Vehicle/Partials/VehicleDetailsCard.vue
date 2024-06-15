@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Table, TableBody, TableRow, TableCell } from '@/Components/ui/table';
+import { Table, TableBody, TableCell, TableRow } from '@/Components/ui/table';
 import { Vehicle } from '@/types/Vehicle';
 
 defineProps<{

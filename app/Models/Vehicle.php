@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Maintenance;
+use App\Models\Booking;
 
 class Vehicle extends Model
 {
@@ -13,6 +14,11 @@ class Vehicle extends Model
     public function maintenances()
     {
         return $this->hasMany(Maintenance::class);
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
     }
 
     public function vehicleDto()
@@ -25,6 +31,7 @@ class Vehicle extends Model
             'color' => $this->color,
             'year' => $this->year,
             'maintenances' => $this->maintenances->map->maintenanceDto(),
+            'bookings' => $this->bookings->map->bookingWoVehicleDto(),
             'status' => $this->status,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,

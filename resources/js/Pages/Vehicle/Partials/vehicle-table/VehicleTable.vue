@@ -1,19 +1,12 @@
 <script setup lang="ts" generic="TData, TValue">
-import type {
-  ColumnDef,
-  SortingState,
-  VisibilityState,
-  ColumnFiltersState,
-} from '@tanstack/vue-table';
+import { Button } from '@/Components/ui/button';
 import {
-  FlexRender,
-  getCoreRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  getFilteredRowModel,
-  useVueTable,
-} from '@tanstack/vue-table';
-import { valueUpdater } from '@/lib/utils';
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from '@/Components/ui/dropdown-menu';
+import { Input } from '@/Components/ui/input';
 import {
   Table,
   TableBody,
@@ -22,16 +15,23 @@ import {
   TableHeader,
   TableRow,
 } from '@/Components/ui/table';
+import { valueUpdater } from '@/lib/utils';
+import type {
+  ColumnDef,
+  ColumnFiltersState,
+  SortingState,
+  VisibilityState,
+} from '@tanstack/vue-table';
 import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from '@/Components/ui/dropdown-menu';
-import { Button } from '@/Components/ui/button';
-import { Input } from '@/Components/ui/input';
-import { ref } from 'vue';
+  FlexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useVueTable,
+} from '@tanstack/vue-table';
 import { ChevronDown, SearchIcon, X } from 'lucide-vue-next';
+import { ref } from 'vue';
 
 const props = defineProps<{
   columns: ColumnDef<TData, TValue>[];

@@ -7,6 +7,13 @@ import {
   CardTitle,
 } from '@/Components/ui/card';
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/Components/ui/dialog';
+import {
   Table,
   TableBody,
   TableCell,
@@ -14,13 +21,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/Components/ui/table';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '@/Components/ui/dialog';
 import { Booking } from '@/types/Booking';
 import { ref } from 'vue';
 

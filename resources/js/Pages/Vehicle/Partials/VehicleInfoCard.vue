@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Vehicle } from '@/types/Vehicle';
-import { Car } from 'lucide-vue-next';
 import { router } from '@inertiajs/vue3';
+import { Car } from 'lucide-vue-next';
 
 defineProps<{ vehicle: Vehicle }>();
 

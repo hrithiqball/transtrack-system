@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
 import Map from '@/Pages/Dashboard/Partials/Map.vue';
-import CalendarMaintenance from './Partials/CalendarMaintenance.vue';
+import { Head } from '@inertiajs/vue3';
+import Calendar from './Partials/Calendar.vue';
 </script>
 
 <template>
@@ -23,7 +23,7 @@ import CalendarMaintenance from './Partials/CalendarMaintenance.vue';
           class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg"
         >
           <Map />
-          <CalendarMaintenance />
+          <Calendar />
         </div>
       </div>
     </div>

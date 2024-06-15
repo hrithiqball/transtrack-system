@@ -1,8 +1,8 @@
-import { ColumnDef } from '@tanstack/vue-table';
-import { ArrowUpDown } from 'lucide-vue-next';
 import { Button } from '@/Components/ui/button';
 import { Checkbox } from '@/Components/ui/checkbox';
 import { Vehicle } from '@/types/Vehicle';
+import { ColumnDef } from '@tanstack/vue-table';
+import { ArrowUpDown } from 'lucide-vue-next';
 import { h } from 'vue';
 import DropdownAction from '../vehicle-table/DropdownAction.vue';
 import PlateNumberCell from './PlateNumberCell.vue';

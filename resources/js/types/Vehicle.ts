@@ -1,3 +1,4 @@
+import { Booking } from './Booking';
 import { Maintenance } from './Maintenance';
 
 export type Vehicle = {
@@ -8,6 +9,7 @@ export type Vehicle = {
   plateNumber: string;
   color: string;
   maintenances?: Maintenance[];
+  bookings?: Booking[];
   status: string;
   latitude: number;
   longitude: number;

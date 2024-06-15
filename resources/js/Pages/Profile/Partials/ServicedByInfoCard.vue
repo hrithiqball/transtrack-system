@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { User } from '@/types';
-import { Mail, UserIcon } from 'lucide-vue-next';
 import { router } from '@inertiajs/vue3';
+import { Mail, UserIcon } from 'lucide-vue-next';
 
 defineProps<{ servicedBy: User }>();
 

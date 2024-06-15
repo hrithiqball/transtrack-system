@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, usePage } from '@inertiajs/vue3';
 import { Maintenance } from '@/types/Maintenance';
+import { Head, usePage } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import MaintenanceCard from './Partials/MaintenanceCard.vue';
 
