@@ -6,28 +6,30 @@ defineProps<{ vehicle: Vehicle }>();
 
 <template>
   <span
-    v-if="vehicle.status === 'Unavailable To Operate'"
-    class="rounded bg-gray-800 px-2"
+    v-if="vehicle.status === 'unavailable'"
+    class="rounded bg-gray-800 px-2 py-1 text-xs text-white"
   >
-    {{ vehicle.status }}
+    Unavailable
   </span>
   <span
-    v-if="vehicle.status === 'Ready To Operate'"
-    class="rounded bg-green-800 px-2"
+    v-else-if="vehicle.status === 'available'"
+    class="rounded bg-green-800 px-2 py-1 text-xs text-white"
   >
-    {{ vehicle.status }}
+    Available
   </span>
   <span
-    v-if="vehicle.status === 'Currently In Use'"
-    class="rounded bg-yellow-800 px-2"
+    v-else-if="vehicle.status === 'in_use'"
+    class="rounded bg-yellow-800 px-2 py-1 text-xs text-white"
   >
-    {{ vehicle.status }}
+    In Use
   </span>
   <span
-    v-if="vehicle.status === 'In Maintenance'"
-    class="rounded bg-orange-800 px-2"
+    v-else-if="vehicle.status === 'maintenance'"
+    class="rounded bg-orange-800 px-2 py-1 text-xs text-white"
   >
-    {{ vehicle.status }}
+    Maintenance
   </span>
-  <span v-if="!vehicle.status" class="animate-spin">N/A</span>
+  <span v-else class="rounded bg-gray-800 px-2 py-1 text-xs text-white"
+    >N/A</span
+  >
 </template>

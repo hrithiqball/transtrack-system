@@ -14,7 +14,11 @@ class UpdateVehicleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'plate_number' => ['string', 'max:12'],
+            'plate_number' => ['string', 'max:32'],
+            'color' => ['string', 'max:255'],
+            'status' => ['string', 'max:255'],
+            'latitude' => ['numeric'],
+            'longitude' => ['numeric'],
         ];
     }
 
@@ -22,6 +26,10 @@ class UpdateVehicleRequest extends FormRequest
     {
         return [
             'plate_number' => 'plate_number',
+            'color' => 'color',
+            'status' => 'status',
+            'latitude' => 'latitude',
+            'longitude' => 'longitude',
         ];
     }
 }

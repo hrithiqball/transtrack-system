@@ -62,10 +62,20 @@ const deleteVehicle = (id: number) => {
         <DropdownMenuItem @click="openDetails(vehicle.id)">
           Details
         </DropdownMenuItem>
-        <DropdownMenuItem @click="editVehicle(vehicle.id)">
+        <DropdownMenuItem
+          v-if="
+            $page.props.auth.user.role === 'admin' ||
+            $page.props.auth.user.role === 'manager'
+          "
+          @click="editVehicle(vehicle.id)"
+        >
           Edit
         </DropdownMenuItem>
         <DropdownMenuItem
+          v-if="
+            $page.props.auth.user.role === 'admin' ||
+            $page.props.auth.user.role === 'manager'
+          "
           class="text-red-500"
           @click="deleteVehicle(vehicle.id)"
         >

@@ -9,25 +9,25 @@ import PlateNumberCell from './PlateNumberCell.vue';
 import StatusCell from './StatusCell.vue';
 
 export const columns: ColumnDef<Vehicle>[] = [
-  {
-    id: 'select',
-    header: ({ table }) =>
-      h(Checkbox, {
-        checked: table.getIsAllPageRowsSelected(),
-        'onUpdate:checked': (value: boolean) =>
-          table.toggleAllPageRowsSelected(Boolean(value)),
-        ariaLabel: 'Select all rows on this page',
-      }),
-    cell: ({ row }) =>
-      h(Checkbox, {
-        checked: row.getIsSelected(),
-        'onUpdate:checked': (value: boolean) =>
-          row.toggleSelected(Boolean(value)),
-        ariaLabel: `Select row with id ${row.original.id}`,
-      }),
-    enableSorting: false,
-    enableHiding: false,
-  },
+  // {
+  //   id: 'select',
+  //   header: ({ table }) =>
+  //     h(Checkbox, {
+  //       checked: table.getIsAllPageRowsSelected(),
+  //       'onUpdate:checked': (value: boolean) =>
+  //         table.toggleAllPageRowsSelected(Boolean(value)),
+  //       ariaLabel: 'Select all rows on this page',
+  //     }),
+  //   cell: ({ row }) =>
+  //     h(Checkbox, {
+  //       checked: row.getIsSelected(),
+  //       'onUpdate:checked': (value: boolean) =>
+  //         row.toggleSelected(Boolean(value)),
+  //       ariaLabel: `Select row with id ${row.original.id}`,
+  //     }),
+  //   enableSorting: false,
+  //   enableHiding: false,
+  // },
   {
     accessorKey: 'plateNumber',
     header: ({ column }) => {

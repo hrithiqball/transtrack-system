@@ -46,9 +46,9 @@ class VehicleController extends Controller
         return Redirect::route('vehicle.view');
     }
 
-    public function update(UpdateVehicleRequest $request, int $id)
+    public function update(UpdateVehicleRequest $request, int $id): RedirectResponse
     {
-        $vehicle = Vehicle::find($id);
+        $vehicle = Vehicle::findOrFail($id);
         $vehicle->update($request->validated());
 
         return Redirect::route('vehicle.view');
