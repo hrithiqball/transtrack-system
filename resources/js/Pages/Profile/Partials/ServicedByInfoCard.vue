@@ -12,7 +12,7 @@ const handleVisitUser = (id: number) => {
 
 <template>
   <div
-    class="flex cursor-pointer flex-col items-center space-y-4 rounded-lg bg-slate-200 p-4 dark:bg-slate-700"
+    class="flex cursor-pointer flex-col items-center space-y-4 rounded-lg bg-gray-100 p-4 dark:bg-gray-900"
     @click="handleVisitUser(servicedBy.id)"
   >
     <span class="text-lg font-semibold">Serviced By</span>

@@ -12,7 +12,7 @@ const handleVisitVehicle = (id: number) => {
 
 <template>
   <div
-    class="flex cursor-pointer flex-col items-center space-y-4 rounded-lg bg-slate-200 p-4 dark:bg-slate-700"
+    class="flex cursor-pointer flex-col items-center space-y-4 rounded-lg bg-gray-100 p-4 dark:bg-gray-900"
     @click="handleVisitVehicle(vehicle.id)"
   >
     <span class="text-lg font-semibold">Vehicle</span>
@@ -24,7 +24,9 @@ const handleVisitVehicle = (id: number) => {
       />
     </div>
     <div class="mb-2">
-      <span class="rounded-md border-2 border-white bg-black px-2 py-1">
+      <span
+        class="rounded-md border-2 border-white bg-black px-2 py-1 text-white"
+      >
         {{ vehicle.plateNumber }}
       </span>
     </div>
