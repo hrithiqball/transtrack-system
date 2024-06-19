@@ -90,7 +90,6 @@ const rejectBooking = () => {
           <TableRow>
             <TableHead> ID </TableHead>
             <TableHead> Vehicle Plate Number </TableHead>
-            <TableHead> Status </TableHead>
             <TableHead> Notes </TableHead>
           </TableRow>
         </TableHeader>
@@ -103,8 +102,6 @@ const rejectBooking = () => {
           >
             <TableCell>{{ booking.id }}</TableCell>
             <TableCell>{{ booking.vehicle.plateNumber }}</TableCell>
-            <TableCell>{{ booking.status }}</TableCell>
-            <!-- TODO: maybe in a new component -->
             <TableCell>{{ booking.notes }}</TableCell>
           </TableRow>
         </TableBody>

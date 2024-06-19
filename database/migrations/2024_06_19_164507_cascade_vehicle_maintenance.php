@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('bookings', function (Blueprint $table) {
-            if (Schema::hasColumn('bookings', 'vehicle_id')) {
+        Schema::table('maintenances', function (Blueprint $table) {
+            if (Schema::hasColumn('maintenances', 'vehicle_id')) {
                 $table->dropForeign(['vehicle_id']);
             }
 
@@ -28,7 +28,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('bookings', function (Blueprint $table) {
+        Schema::table('maintenances', function (Blueprint $table) {
             $table->dropForeign(['vehicle_id']);
             $table->foreign('vehicle_id')
                 ->references('id')

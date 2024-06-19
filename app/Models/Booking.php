@@ -28,7 +28,8 @@ class Booking extends Model
             'vehicle' => $this->vehicle->vehicleDto(),
             'bookedBy' => $this->bookedBy->userDto(),
             'status' => $this->status,
-            'notes' => $this->notes
+            'notes' => $this->notes,
+            'createdAt' => $this->created_at,
         ];
     }
 
@@ -40,7 +41,8 @@ class Booking extends Model
             'endDate' => $this->end_date,
             'bookedBy' => $this->bookedBy->userDto(),
             'status' => $this->status,
-            'notes' => $this->notes
+            'notes' => $this->notes,
+            'createdAt' => $this->created_at,
         ];
     }
 
@@ -50,7 +52,8 @@ class Booking extends Model
         'vehicle_id',
         'booked_by',
         'status',
-        'notes'
+        'notes',
+        'created_at',
     ];
 
     protected $attributes = [

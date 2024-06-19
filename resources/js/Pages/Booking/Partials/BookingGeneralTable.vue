@@ -41,7 +41,7 @@ const handleOpenDialog = (booking: Booking) => {
   <Card>
     <CardHeader>
       <CardTitle> General </CardTitle>
-      <CardDescription> View your bookings here. </CardDescription>
+      <CardDescription> View bookings here. </CardDescription>
     </CardHeader>
     <CardContent class="space-y-2">
       <Table v-if="bookings.length > 0">
@@ -62,7 +62,24 @@ const handleOpenDialog = (booking: Booking) => {
           >
             <TableCell>{{ booking.id }}</TableCell>
             <TableCell>{{ booking.vehicle.plateNumber }}</TableCell>
-            <TableCell>{{ booking.status }}</TableCell>
+            <TableCell
+              v-if="booking.status === 'Approved'"
+              class="font-semibold text-green-500"
+            >
+              {{ booking.status }}
+            </TableCell>
+            <TableCell
+              v-else-if="booking.status === 'Pending'"
+              class="font-semibold text-yellow-500"
+            >
+              {{ booking.status }}
+            </TableCell>
+            <TableCell
+              v-else-if="booking.status === 'Rejected'"
+              class="font-semibold text-red-500"
+            >
+              {{ booking.status }}
+            </TableCell>
             <TableCell>{{ booking.notes }}</TableCell>
           </TableRow>
         </TableBody>
@@ -112,7 +129,24 @@ const handleOpenDialog = (booking: Booking) => {
               </TableRow>
               <TableRow>
                 <TableCell> Status </TableCell>
-                <TableCell>{{ currentBooking?.status }}</TableCell>
+                <TableCell
+                  v-if="currentBooking?.status === 'Approved'"
+                  class="font-semibold text-green-500"
+                >
+                  {{ currentBooking?.status }}
+                </TableCell>
+                <TableCell
+                  v-else-if="currentBooking?.status === 'Rejected'"
+                  class="font-semibold text-red-500"
+                >
+                  {{ currentBooking?.status }}
+                </TableCell>
+                <TableCell
+                  v-else-if="currentBooking?.status === 'Pending'"
+                  class="font-semibold text-yellow-500"
+                >
+                  {{ currentBooking?.status }}
+                </TableCell>
               </TableRow>
             </TableBody>
           </Table>

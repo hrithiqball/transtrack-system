@@ -38,7 +38,12 @@ onMounted(() => {
         >
           Vehicle
         </h2>
-        <Dialog>
+        <Dialog
+          v-if="
+            $page.props.auth.user.role === 'admin' ||
+            $page.props.auth.user.role === 'manager'
+          "
+        >
           <DialogTrigger as-child>
             <Button variant="outline">Register Vehicle</Button>
           </DialogTrigger>

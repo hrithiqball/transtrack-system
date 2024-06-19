@@ -6,6 +6,7 @@ import { Button } from '@/Components/ui/button';
 import { Input } from '@/Components/ui/input';
 import { InertiaForm, useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import { toast } from 'vue-sonner';
 
 const brandInput = ref<HTMLInputElement | null>(null);
 const modelInput = ref<HTMLInputElement | null>(null);
@@ -69,6 +70,9 @@ const createVehicle = () => {
     },
     onError: (e) => {
       console.error(e);
+      if (form.errors.photo) {
+        toast.error(form.errors.photo);
+      }
       if (form.errors.brand) {
         form.reset('brand');
         brandInput.value?.focus();

@@ -35,7 +35,7 @@ const handleOpenBooking = () => {
       <div class="flex justify-between">
         <div class="flex items-center justify-center">
           <div
-            class="rounded-md border-2 border-solid border-white bg-black px-4 py-1 text-white"
+            class="rounded-md border-2 border-solid border-white bg-black px-4 py-1 text-white shadow-lg"
           >
             <span class="text-xl font-semibold">
               {{ vehicle.plateNumber }}

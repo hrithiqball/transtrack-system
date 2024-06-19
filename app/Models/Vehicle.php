@@ -66,4 +66,8 @@ class Vehicle extends Model
         'longitude',
         'photo'
     ];
+
+    protected $attributes = [
+        'status' => 'available'
+    ];
 }

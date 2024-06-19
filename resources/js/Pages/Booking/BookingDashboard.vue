@@ -11,58 +11,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/Components/ui/tabs';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Booking } from '@/types/Booking';
 import { Vehicle } from '@/types/Vehicle';
-import { Head, InertiaForm, useForm, usePage } from '@inertiajs/vue3';
+import { Head, usePage } from '@inertiajs/vue3';
 import { ref } from 'vue';
-import { toast } from 'vue-sonner';
 import BookVehicleForm from './Partials/BookVehicleForm.vue';
 import BookingApprovalTable from './Partials/BookingApprovalTable.vue';
 import BookingGeneralTable from './Partials/BookingGeneralTable.vue';
 
 const bookings = usePage().props.bookings as Booking[];
 const vehicles = usePage().props.vehicles as Vehicle[];
-const openDetails = ref(false);
-const currentBooking = ref<Booking | null>(null);
-
-const handleOpenDialog = (booking: Booking) => {
-  currentBooking.value = booking;
-  openDetails.value = !openDetails.value;
-};
-
-const approveBooking = () => {
-  const form: InertiaForm<{ status: string }> = useForm({
-    status: 'Approved',
-  });
-
-  form.put(route('booking.update', { booking: currentBooking.value }), {
-    preserveScroll: true,
-    onSuccess: () => {
-      form.reset();
-      openDetails.value = false;
-      toast.success('Booking approved successfully');
-    },
-    onError: (e) => {
-      console.error(e);
-    },
-  });
-};
-
-const rejectBooking = () => {
-  const form: InertiaForm<{ status: string }> = useForm({
-    status: 'Rejected',
-  });
-
-  form.put(route('booking.update', { booking: currentBooking.value }), {
-    preserveScroll: true,
-    onSuccess: () => {
-      form.reset();
-      openDetails.value = false;
-      toast.success('Booking rejected successfully');
-    },
-    onError: (e) => {
-      console.error(e);
-    },
-  });
-};
 </script>
 
 <template>

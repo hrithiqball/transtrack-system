@@ -3,6 +3,7 @@ import { Vehicle } from '@/types/Vehicle';
 import { usePage } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import { GoogleMap, InfoWindow, Marker } from 'vue3-google-map';
+import VehicleInfoMessage from './VehicleInfoMessage.vue';
 
 const center = { lat: 3.06834, lng: 101.506318 };
 const apiKey = ref(import.meta.env.VITE_GOOGLE_MAP_API);
@@ -32,21 +33,12 @@ const markerList = vehicles.map((vehicle) => ({
       }"
     >
       <InfoWindow>
-        <div class="space-y-4 rounded p-2 dark:bg-gray-800">
-          <div class="rounded-lg border-4 border-white bg-black p-2">
-            <span class="text-3xl font-bold text-white"
-              >{{ marker.vehicle.plateNumber }}
-            </span>
-          </div>
-          <div class="flex flex-col">
-            <div class="flex items-center space-x-2">
-              <span class="text-lg font-semibold">
-                {{ marker.vehicle.brand }}
-              </span>
-              <span>{{ marker.vehicle.model }}</span>
-            </div>
-          </div>
-        </div>
+        <VehicleInfoMessage
+          :plateNumber="marker.vehicle.plateNumber"
+          :brand="marker.vehicle.brand"
+          :model="marker.vehicle.model"
+          :color="marker.vehicle.color"
+        />
       </InfoWindow>
     </Marker>
   </GoogleMap>
