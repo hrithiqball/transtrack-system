@@ -35,9 +35,9 @@ const handleOpenCreateMaintenance = () => {
   <div class="flex flex-col">
     <div class="flex justify-between">
       <span class="text-lg font-semibold">Maintenances</span>
-      <Button variant="outline" @click="handleOpenCreateMaintenance()"
-        >Create Maintenance</Button
-      >
+      <Button variant="outline" @click="handleOpenCreateMaintenance()">
+        Create Maintenance
+      </Button>
     </div>
     <Table>
       <TableHeader>

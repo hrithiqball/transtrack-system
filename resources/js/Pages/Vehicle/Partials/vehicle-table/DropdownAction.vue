@@ -5,7 +5,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from '@/Components/ui/dialog';
 import {
   DropdownMenu,
@@ -19,14 +18,14 @@ import { router } from '@inertiajs/vue3';
 import { MoreHorizontal } from 'lucide-vue-next';
 import { ref } from 'vue';
 
-defineProps<{
-  vehicle: Vehicle;
-}>();
+defineProps<{ vehicle: Vehicle }>();
 
 const vehicleId = ref(0);
+const openCreateMaintenance = ref(false);
 
 const openCreateMaintenanceDialog = (id: number) => {
   vehicleId.value = id;
+  openCreateMaintenance.value = true;
 };
 
 const openDetails = (id: number) => {
@@ -45,44 +44,49 @@ const deleteVehicle = (id: number) => {
 </script>
 
 <template>
-  <Dialog>
-    <DropdownMenu>
-      <DropdownMenuTrigger as-child>
-        <Button variant="ghost" class="size-8 p-0">
-          <span class="sr-only">Open menu</span>
-          <MoreHorizontal class="size-4" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DialogTrigger as-child>
-          <DropdownMenuItem @click="openCreateMaintenanceDialog(vehicle.id)">
-            Create Maintenance
-          </DropdownMenuItem>
-        </DialogTrigger>
-        <DropdownMenuItem @click="openDetails(vehicle.id)">
-          Details
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          v-if="
-            $page.props.auth.user.role === 'admin' ||
-            $page.props.auth.user.role === 'manager'
-          "
-          @click="editVehicle(vehicle.id)"
-        >
-          Edit
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          v-if="
-            $page.props.auth.user.role === 'admin' ||
-            $page.props.auth.user.role === 'manager'
-          "
-          class="text-red-500"
-          @click="deleteVehicle(vehicle.id)"
-        >
-          Delete
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+  <DropdownMenu>
+    <DropdownMenuTrigger as-child>
+      <Button variant="ghost" class="size-8 p-0">
+        <span class="sr-only">Open menu</span>
+        <MoreHorizontal class="size-4" />
+      </Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent align="end">
+      <DropdownMenuItem
+        v-if="
+          $page.props.auth.user.role === 'admin' ||
+          $page.props.auth.user.role === 'personnel' ||
+          $page.props.auth.user.role === 'manager'
+        "
+        @click="openCreateMaintenanceDialog(vehicle.id)"
+      >
+        Create Maintenance
+      </DropdownMenuItem>
+      <DropdownMenuItem @click="openDetails(vehicle.id)">
+        Details
+      </DropdownMenuItem>
+      <DropdownMenuItem
+        v-if="
+          $page.props.auth.user.role === 'admin' ||
+          $page.props.auth.user.role === 'manager'
+        "
+        @click="editVehicle(vehicle.id)"
+      >
+        Edit
+      </DropdownMenuItem>
+      <DropdownMenuItem
+        v-if="
+          $page.props.auth.user.role === 'admin' ||
+          $page.props.auth.user.role === 'manager'
+        "
+        class="text-red-500"
+        @click="deleteVehicle(vehicle.id)"
+      >
+        Delete
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+  <Dialog v-model:open="openCreateMaintenance">
     <DialogContent>
       <DialogHeader aria-describedby="Maintenance form">
         <DialogTitle>Create Maintenance</DialogTitle>
