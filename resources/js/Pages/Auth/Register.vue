@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
+import { Label } from '@/Components/ui/label';
+import { Input } from '@/Components/ui/input';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
@@ -27,13 +27,13 @@ const submit = () => {
 
     <form @submit.prevent="submit">
       <div>
-        <InputLabel for="name" value="Name" />
+        <Label for="name">Name</Label>
 
-        <TextInput
+        <Input
           id="name"
           v-model="form.name"
           type="text"
-          class="mt-1 block w-full"
+          class="mt-1 block w-full dark:bg-input"
           required
           autofocus
           autocomplete="name"
@@ -43,13 +43,13 @@ const submit = () => {
       </div>
 
       <div class="mt-4">
-        <InputLabel for="email" value="Email" />
+        <Label for="email"> Email </Label>
 
-        <TextInput
+        <Input
           id="email"
           v-model="form.email"
           type="email"
-          class="mt-1 block w-full"
+          class="mt-1 block w-full dark:bg-input"
           required
           autocomplete="username"
         />
@@ -58,13 +58,13 @@ const submit = () => {
       </div>
 
       <div class="mt-4">
-        <InputLabel for="password" value="Password" />
+        <Label for="password"> Password </Label>
 
-        <TextInput
+        <Input
           id="password"
           v-model="form.password"
           type="password"
-          class="mt-1 block w-full"
+          class="mt-1 block w-full dark:bg-input"
           required
           autocomplete="new-password"
         />
@@ -73,13 +73,15 @@ const submit = () => {
       </div>
 
       <div class="mt-4">
-        <InputLabel for="password_confirmation" value="Confirm Password" />
+        <Label for="password_confirmation" value="Confirm Password">
+          Confirm Password</Label
+        >
 
-        <TextInput
+        <Input
           id="password_confirmation"
           v-model="form.password_confirmation"
           type="password"
-          class="mt-1 block w-full"
+          class="mt-1 block w-full dark:bg-input"
           required
           autocomplete="new-password"
         />

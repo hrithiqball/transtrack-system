@@ -51,7 +51,7 @@ onMounted(() => {
             <DialogHeader>
               <DialogTitle> Register new vehicle </DialogTitle>
             </DialogHeader>
-            <AddVehicleForm />
+            <!-- <AddVehicleForm /> -->
           </DialogContent>
         </Dialog>
       </div>

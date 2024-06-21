@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
 import { Button } from '@/Components/ui/button';
 import { Input } from '@/Components/ui/input';
+import { Label } from '@/Components/ui/label';
 import { InertiaForm, useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import { toast } from 'vue-sonner';
@@ -116,9 +115,9 @@ const createVehicle = () => {
   <section>
     <form class="mt-4 space-y-4" @submit.prevent="createVehicle">
       <div>
-        <InputLabel for="brand" value="Brand" />
+        <Label for="brand"> Brand </Label>
 
-        <TextInput
+        <Input
           id="brand"
           v-model="form.brand"
           type="text"
@@ -132,9 +131,9 @@ const createVehicle = () => {
       </div>
 
       <div>
-        <InputLabel for="model" value="Model" />
+        <Label for="model">Model</Label>
 
-        <TextInput
+        <Input
           id="model"
           v-model="form.model"
           type="text"
@@ -148,9 +147,9 @@ const createVehicle = () => {
       </div>
 
       <div>
-        <InputLabel for="plate_number" value="Plate Number" />
+        <Label for="plate_number"> Plate Number </Label>
 
-        <TextInput
+        <Input
           id="plate_number"
           v-model="form.plate_number"
           type="text"
@@ -164,9 +163,9 @@ const createVehicle = () => {
       </div>
 
       <div>
-        <InputLabel for="color" value="Color" />
+        <Label for="color"> Color </Label>
 
-        <TextInput
+        <Input
           id="color"
           v-model="form.color"
           type="color"
@@ -178,9 +177,9 @@ const createVehicle = () => {
       </div>
 
       <div>
-        <InputLabel for="year" value="Year of Make" />
+        <Label for="year"> Year of Make" </Label>
 
-        <TextInput
+        <Input
           id="year"
           v-model="form.year"
           type="number"
@@ -192,9 +191,10 @@ const createVehicle = () => {
       </div>
 
       <div>
-        <InputLabel for="photo" value="Photo" />
+        <Label for="photo"> Photo </Label>
 
         <Input
+          id="photo"
           type="file"
           placeholder="Vehicle Image"
           accept=".png, .jpg"
@@ -210,9 +210,9 @@ const createVehicle = () => {
       </div>
 
       <div>
-        <InputLabel for="latitude" value="Latitude" />
+        <Label for="latitude"> Latitude </Label>
 
-        <TextInput
+        <Input
           id="latitude"
           v-model="form.latitude"
           type="number"
@@ -225,9 +225,9 @@ const createVehicle = () => {
       </div>
 
       <div>
-        <InputLabel for="longitude" value="Longitude" />
+        <Label for="longitude"> Longitude </Label>
 
-        <TextInput
+        <Input
           id="longitude"
           v-model="form.longitude"
           type="number"

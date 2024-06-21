@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 
@@ -29,12 +27,12 @@ const submit = () => {
 
     <form @submit.prevent="submit">
       <div>
-        <InputLabel for="password" value="Password" />
-        <TextInput
+        <Label for="password"> Password </Label>
+        <Input
           id="password"
           v-model="form.password"
           type="password"
-          class="mt-1 block w-full"
+          class="mt-1 block w-full dark:bg-input"
           required
           autocomplete="current-password"
           autofocus

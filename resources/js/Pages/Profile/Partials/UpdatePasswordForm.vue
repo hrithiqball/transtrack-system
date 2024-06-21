@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
+import { Button } from '@/Components/ui/button';
+import { Input } from '@/Components/ui/input';
+import { Label } from '@/Components/ui/label';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
@@ -46,31 +47,30 @@ const updatePassword = () => {
       </p>
     </header>
 
-    <form class="mt-6 space-y-6" @submit.prevent="updatePassword">
+    <form class="mt-4 space-y-4" @submit.prevent="updatePassword">
       <div>
-        <InputLabel for="current_password" value="Current Password" />
+        <Label for="current_password"> Current Password </Label>
 
-        <TextInput
+        <Input
           id="current_password"
           ref="currentPasswordInput"
           v-model="form.current_password"
           type="password"
-          class="mt-1 block w-full"
-          autocomplete="current-password"
+          class="mt-1 block w-full dark:bg-input"
         />
 
         <InputError :message="form.errors.current_password" class="mt-2" />
       </div>
 
       <div>
-        <InputLabel for="password" value="New Password" />
+        <Label for="password"> New Password </Label>
 
-        <TextInput
+        <Input
           id="password"
           ref="passwordInput"
           v-model="form.password"
           type="password"
-          class="mt-1 block w-full"
+          class="mt-1 block w-full dark:bg-input"
           autocomplete="new-password"
         />
 
@@ -78,13 +78,13 @@ const updatePassword = () => {
       </div>
 
       <div>
-        <InputLabel for="password_confirmation" value="Confirm Password" />
+        <Label for="password_confirmation"> Confirm Password </Label>
 
-        <TextInput
+        <Input
           id="password_confirmation"
           v-model="form.password_confirmation"
           type="password"
-          class="mt-1 block w-full"
+          class="mt-1 block w-full dark:bg-input"
           autocomplete="new-password"
         />
 
@@ -92,7 +92,7 @@ const updatePassword = () => {
       </div>
 
       <div class="flex items-center gap-4">
-        <button :disabled="form.processing">Save</button>
+        <Button :disabled="form.processing">Save</Button>
 
         <Transition
           enter-active-class="transition ease-in-out"

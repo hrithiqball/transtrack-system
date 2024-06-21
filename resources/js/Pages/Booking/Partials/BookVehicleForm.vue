@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import InputLabel from '@/Components/InputLabel.vue';
 import { Button } from '@/Components/ui/button';
 import { Label } from '@/Components/ui/label';
 import {
@@ -120,7 +119,7 @@ const createBooking = () => {
   <section>
     <form class="mt-4 space-y-4" @submit.prevent="createBooking">
       <div>
-        <InputLabel for="vehicleId">Vehicle</InputLabel>
+        <Label for="vehicleId">Vehicle</Label>
       </div>
       <Select v-model="selectedVehicleId">
         <SelectTrigger>
@@ -180,7 +179,7 @@ const createBooking = () => {
       </div>
 
       <div>
-        <InputLabel for="notes" value="Notes" />
+        <Label for="notes">Notes</Label>
 
         <Textarea
           id="notes"

@@ -55,8 +55,7 @@ const deleteVehicle = (id: number) => {
       <DropdownMenuItem
         v-if="
           $page.props.auth.user.role === 'admin' ||
-          $page.props.auth.user.role === 'personnel' ||
-          $page.props.auth.user.role === 'manager'
+          $page.props.auth.user.role === 'personnel'
         "
         @click="openCreateMaintenanceDialog(vehicle.id)"
       >

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
+import { Button } from '@/Components/ui/button';
+import { Input } from '@/Components/ui/input';
+import { Label } from '@/Components/ui/label';
 import { Link, useForm, usePage } from '@inertiajs/vue3';
 
 defineProps<{
-  mustVerifyEmail?: boolean;
   status?: string;
 }>();
 
@@ -30,17 +30,28 @@ const form = useForm({
     </header>
 
     <form
-      class="mt-6 space-y-6"
+      class="mt-4 space-y-4"
       @submit.prevent="form.patch(route('profile.update'))"
     >
-      <div>
-        <InputLabel for="name" value="Name" />
+      <div class="flex flex-col space-y-3">
+        <Label>Role</Label>
+        <div>
+          <span
+            class="rounded-lg bg-violet-500 px-2 py-1 font-semibold text-white"
+          >
+            {{ user.role.toUpperCase() }}
+          </span>
+        </div>
+      </div>
 
-        <TextInput
+      <div>
+        <Label for="name"> Name </Label>
+
+        <Input
           id="name"
           v-model="form.name"
           type="text"
-          class="mt-1 block w-full"
+          class="mt-1 block w-full dark:bg-input"
           required
           autofocus
           autocomplete="name"
@@ -50,13 +61,13 @@ const form = useForm({
       </div>
 
       <div>
-        <InputLabel for="email" value="Email" />
+        <Label for="email"> Email </Label>
 
-        <TextInput
+        <Input
           id="email"
           v-model="form.email"
           type="email"
-          class="mt-1 block w-full"
+          class="mt-1 block w-full dark:bg-input"
           required
           autocomplete="username"
         />
@@ -64,29 +75,8 @@ const form = useForm({
         <InputError class="mt-2" :message="form.errors.email" />
       </div>
 
-      <div v-if="mustVerifyEmail && user.email_verified_at === null">
-        <p class="mt-2 text-sm text-gray-800 dark:text-gray-200">
-          Your email address is unverified.
-          <Link
-            :href="route('verification.send')"
-            method="post"
-            as="button"
-            class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
-          >
-            Click here to re-send the verification email.
-          </Link>
-        </p>
-
-        <div
-          v-show="status === 'verification-link-sent'"
-          class="mt-2 text-sm font-medium text-green-600 dark:text-green-400"
-        >
-          A new verification link has been sent to your email address.
-        </div>
-      </div>
-
       <div class="flex items-center gap-4">
-        <button :disabled="form.processing">Save</button>
+        <Button :disabled="form.processing">Save</Button>
 
         <Transition
           enter-active-class="transition ease-in-out"
