@@ -1,5 +1,7 @@
 <script setup lang="ts" generic="TData, TValue">
 import { Button } from '@/Components/ui/button';
+import { Card } from '@/Components/ui/card';
+import CardContent from '@/Components/ui/card/CardContent.vue';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -79,114 +81,116 @@ const table = useVueTable({
 </script>
 
 <template>
-  <div class="flex flex-1 flex-col">
-    <div class="mx-12 flex items-center py-8">
-      <SearchIcon class="mr-2 size-4" />
-      <Input
-        class="max-w-sm"
-        placeholder="Search plate number..."
-        :model-value="
-          table.getColumn('plateNumber')?.getFilterValue() as string
-        "
-        @update:model-value="
-          table.getColumn('plateNumber')?.setFilterValue($event)
-        "
-      />
-      <Button
-        v-if="table.getColumn('plateNumber')?.getFilterValue()"
-        size="icon"
-        @click="table.getColumn('plateNumber')?.setFilterValue('')"
-      >
-        <X class="ml-2 size-4" />
-      </Button>
-      <DropdownMenu>
-        <DropdownMenuTrigger as-child>
-          <Button variant="outline" class="ml-auto">
-            Columns
-            <ChevronDown class="ml-2 h-4 w-4" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuCheckboxItem
-            v-for="column in table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())"
-            :key="column.id"
-            class="capitalize"
-            :checked="column.getIsVisible()"
-            @update:checked="
-              (value) => {
-                column.toggleVisibility(!!value);
-              }
-            "
-          >
-            {{ column.id }}
-          </DropdownMenuCheckboxItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
-    <div class="mx-12 mb-12 flex flex-1 flex-col rounded-md border">
-      <Table class="flex-1">
-        <TableHeader>
-          <TableRow
-            v-for="headerGroup in table.getHeaderGroups()"
-            :key="headerGroup.id"
-          >
-            <TableHead v-for="header in headerGroup.headers" :key="header.id">
-              <FlexRender
-                v-if="!header.isPlaceholder"
-                :render="header.column.columnDef.header"
-                :props="header.getContext()"
-              />
-            </TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <template v-if="table.getRowModel().rows?.length">
-            <TableRow
-              v-for="row in table.getRowModel().rows"
-              :key="row.id"
-              :data-state="row.getIsSelected() ? 'selected' : undefined"
+  <Card class="mt-4 flex flex-1 flex-col p-0">
+    <CardContent>
+      <div class="flex items-center py-8">
+        <SearchIcon class="mr-2 size-4" />
+        <Input
+          class="max-w-sm border border-gray-200"
+          placeholder="Search plate number..."
+          :model-value="
+            table.getColumn('plateNumber')?.getFilterValue() as string
+          "
+          @update:model-value="
+            table.getColumn('plateNumber')?.setFilterValue($event)
+          "
+        />
+        <Button
+          v-if="table.getColumn('plateNumber')?.getFilterValue()"
+          size="icon"
+          @click="table.getColumn('plateNumber')?.setFilterValue('')"
+        >
+          <X class="ml-2 size-4" />
+        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger as-child>
+            <Button variant="outline" class="ml-auto">
+              Columns
+              <ChevronDown class="ml-2 h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuCheckboxItem
+              v-for="column in table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())"
+              :key="column.id"
+              class="capitalize"
+              :checked="column.getIsVisible()"
+              @update:checked="
+                (value) => {
+                  column.toggleVisibility(!!value);
+                }
+              "
             >
-              <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
+              {{ column.id }}
+            </DropdownMenuCheckboxItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+      <div class="flex flex-1 flex-col rounded-md">
+        <Table>
+          <TableHeader>
+            <TableRow
+              v-for="headerGroup in table.getHeaderGroups()"
+              :key="headerGroup.id"
+            >
+              <TableHead v-for="header in headerGroup.headers" :key="header.id">
                 <FlexRender
-                  :render="cell.column.columnDef.cell"
-                  :props="cell.getContext()"
+                  v-if="!header.isPlaceholder"
+                  :render="header.column.columnDef.header"
+                  :props="header.getContext()"
                 />
-              </TableCell>
+              </TableHead>
             </TableRow>
-          </template>
-          <template v-else>
-            <TableRow>
-              <TableCell :colSpan="columns.length" class="h-24 text-center">
-                No results.
-              </TableCell>
-            </TableRow>
-          </template>
-        </TableBody>
-      </Table>
-      <div class="mx-4 flex items-center justify-between">
-        <div class="text-sm text-muted-foreground">
-          {{ table.getFilteredSelectedRowModel().rows.length }} of
-          {{ table.getFilteredRowModel().rows.length }} row(s) selected.
-        </div>
-        <div class="flex items-center justify-end space-x-2 py-4">
-          <Button
-            variant="outline"
-            size="sm"
-            :disabled="!table.getCanPreviousPage()"
-            @click="table.previousPage()"
-            >Previous</Button
-          >
-          <Button
-            variant="outline"
-            size="sm"
-            :disabled="!table.getCanNextPage()"
-            @click="table.nextPage()"
-            >Next</Button
-          >
+          </TableHeader>
+          <TableBody>
+            <template v-if="table.getRowModel().rows?.length">
+              <TableRow
+                v-for="row in table.getRowModel().rows"
+                :key="row.id"
+                :data-state="row.getIsSelected() ? 'selected' : undefined"
+              >
+                <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
+                  <FlexRender
+                    :render="cell.column.columnDef.cell"
+                    :props="cell.getContext()"
+                  />
+                </TableCell>
+              </TableRow>
+            </template>
+            <template v-else>
+              <TableRow>
+                <TableCell :colSpan="columns.length" class="h-24 text-center">
+                  No results.
+                </TableCell>
+              </TableRow>
+            </template>
+          </TableBody>
+        </Table>
+        <div class="mx-4 flex items-center justify-between">
+          <div class="text-sm text-muted-foreground">
+            {{ table.getFilteredSelectedRowModel().rows.length }} of
+            {{ table.getFilteredRowModel().rows.length }} row(s) selected.
+          </div>
+          <div class="flex items-center justify-end space-x-2 py-4">
+            <Button
+              variant="outline"
+              size="sm"
+              :disabled="!table.getCanPreviousPage()"
+              @click="table.previousPage()"
+              >Previous</Button
+            >
+            <Button
+              variant="outline"
+              size="sm"
+              :disabled="!table.getCanNextPage()"
+              @click="table.nextPage()"
+              >Next</Button
+            >
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+    </CardContent>
+  </Card>
 </template>

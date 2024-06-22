@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Card } from '@/Components/ui/card';
 import { User } from '@/types';
 import { router } from '@inertiajs/vue3';
 import { Mail, UserIcon } from 'lucide-vue-next';
@@ -11,11 +12,11 @@ const handleVisitUser = (id: number) => {
 </script>
 
 <template>
-  <div
-    class="flex cursor-pointer flex-col items-center space-y-4 rounded-lg bg-gray-100 p-4 dark:bg-gray-900"
+  <Card
+    class="flex cursor-pointer flex-col items-center space-y-4 rounded-lg p-4"
     @click="handleVisitUser(servicedBy.id)"
   >
-    <span class="text-lg font-semibold">Serviced By</span>
+    <span class="text-lg font-semibold">Service By</span>
     <div
       class="flex size-20 items-center justify-center rounded-full bg-slate-300 dark:bg-slate-800"
     >
@@ -45,5 +46,5 @@ const handleVisitUser = (id: number) => {
         </span>
       </div>
     </div>
-  </div>
+  </Card>
 </template>

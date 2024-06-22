@@ -51,12 +51,11 @@ onMounted(() => {
             <DialogHeader>
               <DialogTitle> Register new vehicle </DialogTitle>
             </DialogHeader>
-            <!-- <AddVehicleForm /> -->
+            <AddVehicleForm />
           </DialogContent>
         </Dialog>
       </div>
+      <DataTable :columns :data />
     </template>
-
-    <DataTable :columns :data />
   </AuthenticatedLayout>
 </template>

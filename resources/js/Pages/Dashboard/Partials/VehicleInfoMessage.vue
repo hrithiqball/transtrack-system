@@ -6,6 +6,7 @@ defineProps<{
   brand: string;
   model: string;
   color: string;
+  status: string | null;
 }>();
 </script>
 
@@ -20,6 +21,7 @@ defineProps<{
           <Car :size="18" :color="color" />
         </span>
         <span class="text-base font-semibold"> {{ brand }} {{ model }} </span>
+        <span>{{ status?.toUpperCase() }}</span>
       </div>
     </div>
   </div>

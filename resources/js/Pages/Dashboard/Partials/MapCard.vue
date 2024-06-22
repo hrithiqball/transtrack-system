@@ -19,6 +19,7 @@ const markerList = vehicles.map((vehicle) => ({
     brand: vehicle.brand,
     model: vehicle.model,
     color: vehicle.color,
+    status: vehicle.status,
   },
 }));
 </script>
@@ -38,6 +39,7 @@ const markerList = vehicles.map((vehicle) => ({
           :brand="marker.vehicle.brand"
           :model="marker.vehicle.model"
           :color="marker.vehicle.color"
+          :status="marker.vehicle.status"
         />
       </InfoWindow>
     </Marker>

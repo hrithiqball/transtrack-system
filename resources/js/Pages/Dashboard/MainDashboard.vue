@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { Card, CardContent } from '@/Components/ui/card';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import Map from '@/Pages/Dashboard/Partials/Map.vue';
+import ChartCard from '@/Pages/Dashboard/Partials/ChartCard.vue';
+import MapCard from '@/Pages/Dashboard/Partials/MapCard.vue';
 import { Head } from '@inertiajs/vue3';
-import Calendar from './Partials/Calendar.vue';
+import CalendarCard from './Partials/CalendarCard.vue';
 </script>
 
 <template>
@@ -15,17 +17,17 @@ import Calendar from './Partials/Calendar.vue';
       >
         Dashboard
       </h2>
+      <Card class="mt-4">
+        <CardContent class="p-6">
+          <div class="">
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
+              <MapCard />
+              <CalendarCard />
+              <ChartCard />
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </template>
-
-    <div class="py-12">
-      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div
-          class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg"
-        >
-          <Map />
-          <Calendar />
-        </div>
-      </div>
-    </div>
   </AuthenticatedLayout>
 </template>

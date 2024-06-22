@@ -15,13 +15,21 @@ import { format, startOfToday } from 'date-fns';
 
 const vehicles = usePage().props.vehicles as Vehicle[];
 
-const convertToDate = (date: string) => {
+const events = mapEvent();
+const calendarApp = createCalendar({
+  selectedDate: convertToDate(startOfToday().toString()),
+  views: [viewWeek, viewMonthGrid, viewMonthAgenda],
+  defaultView: viewMonthGrid.name,
+  events,
+});
+
+function convertToDate(date: string) {
   const dateTime = new Date(date);
 
   return `${format(dateTime, 'yyyy')}-${format(dateTime, 'MM')}-${format(dateTime, 'dd')}`;
-};
+}
 
-const mapEvent = () => {
+function mapEvent() {
   const maintenances: Maintenance[] = [];
   const bookings: Booking[] = [];
 
@@ -60,16 +68,7 @@ const mapEvent = () => {
   }));
 
   return [...maintenancesEvent, ...bookingsEvent];
-};
-
-const events = mapEvent();
-
-const calendarApp = createCalendar({
-  selectedDate: convertToDate(startOfToday().toString()),
-  views: [viewWeek, viewMonthGrid, viewMonthAgenda],
-  defaultView: viewMonthGrid.name,
-  events,
-});
+}
 </script>
 
 <template>
