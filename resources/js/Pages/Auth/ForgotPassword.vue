@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import InputError from '@/Components/InputError.vue';
+import { Input } from '@/Components/ui/input';
+import { Label } from '@/Components/ui/label';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 

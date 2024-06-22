@@ -16,7 +16,7 @@ import { Link } from '@inertiajs/vue3';
     <div
       class="w-full space-y-4 overflow-hidden dark:bg-gray-800 sm:max-w-md sm:rounded-lg"
     >
-      <Card>
+      <Card class="dark:bg-gray-800">
         <CardHeader class="items-center">
           <Link href="/">
             <img

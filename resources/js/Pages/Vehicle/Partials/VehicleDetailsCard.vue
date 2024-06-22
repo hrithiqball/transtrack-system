@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Card, CardContent, CardHeader, CardTitle } from '@/Components/ui/card';
 import { Table, TableBody, TableCell, TableRow } from '@/Components/ui/table';
 import { Vehicle } from '@/types/Vehicle';
 
@@ -8,10 +9,11 @@ defineProps<{
 </script>
 
 <template>
-  <div
-    class="flex min-h-60 flex-1 flex-col space-y-4 rounded-lg bg-slate-200 p-4 dark:bg-slate-500"
-  >
-    <div class="flex flex-col">
+  <Card>
+    <CardHeader>
+      <CardTitle>Vehicle Details</CardTitle>
+    </CardHeader>
+    <CardContent>
       <Table>
         <TableBody>
           <TableRow>
@@ -69,6 +71,6 @@ defineProps<{
           </TableRow>
         </TableBody>
       </Table>
-    </div>
-  </div>
+    </CardContent>
+  </Card>
 </template>

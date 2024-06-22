@@ -7,4 +7,5 @@ export type Maintenance = {
   servicedBy: User;
   vehicle: Vehicle;
   remarks: string;
+  completed: boolean;
 };

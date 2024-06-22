@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/Components/ui/card';
 import { Booking } from '@/types/Booking';
 import { Maintenance } from '@/types/Maintenance';
 import { Vehicle } from '@/types/Vehicle';
@@ -72,7 +79,15 @@ function mapEvent() {
 </script>
 
 <template>
-  <div class="mt-4">
-    <ScheduleXCalendar :calendar-app="calendarApp" />
-  </div>
+  <Card>
+    <CardHeader>
+      <CardTitle> Calendar </CardTitle>
+      <CardDescription>
+        View all bookings and maintenance schedules here.
+      </CardDescription>
+    </CardHeader>
+    <CardContent>
+      <ScheduleXCalendar :calendar-app="calendarApp" />
+    </CardContent>
+  </Card>
 </template>

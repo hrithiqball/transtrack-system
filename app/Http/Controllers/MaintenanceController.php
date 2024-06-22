@@ -38,12 +38,12 @@ class MaintenanceController extends Controller
         return Redirect::route('maintenance.view');
     }
 
-    public function update(UpdateMaintenanceRequest $request): RedirectResponse
+    public function update(UpdateMaintenanceRequest $request, int $id): RedirectResponse
     {
-        $maintenance = Maintenance::findOrFail($request->id);
+        $maintenance = Maintenance::findOrFail($id);
         $maintenance->update($request->validated());
 
-        return Redirect::route('maintenance.view');
+        return Redirect::route('maintenance.detail', $id);
     }
 
     public function destroy(int $id): RedirectResponse

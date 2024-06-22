@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/vehicle/{id}/edit', [VehicleController::class, 'edit'])->name('vehicle.edit');
     Route::post('/vehicle', [VehicleController::class, 'store'])->name('vehicle.store');
     Route::put('/vehicle/{id}', [VehicleController::class, 'update'])->name('vehicle.update');
-    Route::delete('/vehicle/{vehicle}', [VehicleController::class, 'destroy'])->name('vehicle.destroy');
+    Route::delete('/vehicle/{id}', [VehicleController::class, 'destroy'])->name('vehicle.destroy');
 
     Route::get('/booking', [BookingController::class, 'view'])->name('booking.view');
     Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
@@ -41,6 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/maintenance', [MaintenanceController::class, 'view'])->name('maintenance.view');
     Route::get('/maintenance/{id}', [MaintenanceController::class, 'detail'])->name('maintenance.detail');
     Route::post('/maintenance', [MaintenanceController::class, 'store'])->name('maintenance.store');
+    Route::put('/maintenance/{id}', [MaintenanceController::class, 'update'])->name('maintenance.update');
+    Route::delete('/maintenance/{id}', [MaintenanceController::class, 'destroy'])->name('maintenance.destroy');
 });
 
 

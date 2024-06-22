@@ -2,11 +2,13 @@
 import { Button } from '@/Components/ui/button';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Vehicle } from '@/types/Vehicle';
-import { Head, Link, usePage } from '@inertiajs/vue3';
+import { Head, Link, router, usePage } from '@inertiajs/vue3';
+import VehicleBookingCard from './Partials/VehicleBookingCard.vue';
 import VehicleDetailsCard from './Partials/VehicleDetailsCard.vue';
 import VehicleImageCard from './Partials/VehicleImageCard.vue';
 import VehicleMaintenanceCard from './Partials/VehicleMaintenanceCard.vue';
 import VehicleMapCard from './Partials/VehicleMapCard.vue';
+import { EditIcon, TrashIcon } from 'lucide-vue-next';
 import { ref } from 'vue';
 import {
   Dialog,
@@ -15,16 +17,21 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/Components/ui/dialog';
-import BookVehicleForm from '../Booking/Partials/BookVehicleForm.vue';
+import { toast } from 'vue-sonner';
 
 const vehicle = usePage().props.vehicle as Vehicle;
 const vehicles = usePage().props.vehicles as Vehicle[];
 
-const openBooking = ref(false);
+const openConfirmationDeleteDialog = ref(false);
 
-const handleOpenBooking = () => {
-  openBooking.value = !openBooking.value;
-};
+function openConfirmationDelete() {
+  openConfirmationDeleteDialog.value = true;
+}
+
+function deleteVehicle(id: number) {
+  router.delete(route('vehicle.destroy', { id }));
+  toast.success('Vehicle deleted successfully');
+}
 </script>
 
 <template>
@@ -42,8 +49,7 @@ const handleOpenBooking = () => {
             </span>
           </div>
         </div>
-        <div class="flex space-x-2">
-          <Button @click="handleOpenBooking()"> Book </Button>
+        <div class="flex items-center space-x-2">
           <Link
             v-if="
               $page.props.auth.user.role === 'admin' ||
@@ -51,40 +57,65 @@ const handleOpenBooking = () => {
             "
             :href="route('vehicle.edit', { id: vehicle.id })"
           >
-            <Button variant="outline"> Edit </Button>
+            <Button variant="outline">
+              <div class="flex items-center space-x-2">
+                <EditIcon :size="15" />
+                <span> Edit </span>
+              </div>
+            </Button>
           </Link>
+          <Button variant="destructive" @click="openConfirmationDelete()">
+            <div class="flex items-center space-x-2">
+              <TrashIcon :size="15" />
+              <span> Delete </span>
+            </div>
+          </Button>
         </div>
       </div>
-    </template>
-    <Dialog v-model:open="openBooking">
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle> Booking Details </DialogTitle>
-          <DialogDescription>{{ vehicle.plateNumber }}</DialogDescription>
-        </DialogHeader>
-        <BookVehicleForm :vehicles :vehicleId="vehicle.id" />
-      </DialogContent>
-    </Dialog>
-    <div class="py-12">
-      <div class="mx-auto max-w-7xl space-y-4 sm:px-6 lg:px-8">
-        <div
-          class="overflow-hidden bg-white p-4 shadow-sm dark:bg-gray-800 sm:rounded-lg"
-        >
-          <div className="grid grid-cols-3 gap-4 h-[250px]">
+      <div class="mt-4 flex flex-col space-y-4">
+        <div>
+          <div className="grid grid-cols-3 gap-4">
             <VehicleImageCard :photo="vehicle.photo" />
             <VehicleDetailsCard :vehicle />
             <VehicleMapCard :lat="vehicle.latitude" :lng="vehicle.longitude" />
+            <VehicleMaintenanceCard
+              class="col-span-3"
+              :maintenances="vehicle.maintenances"
+              :vehicleId="vehicle.id"
+            />
+            <VehicleBookingCard
+              class="col-span-3"
+              :bookings="vehicle.bookings || []"
+              :vehicle
+              :vehicles
+            />
           </div>
         </div>
-        <div
-          class="overflow-hidden bg-white p-4 shadow-sm dark:bg-gray-800 sm:rounded-lg"
-        >
-          <VehicleMaintenanceCard
-            :maintenances="vehicle.maintenances"
-            :vehicleId="vehicle.id"
-          />
-        </div>
       </div>
-    </div>
+    </template>
+
+    <Dialog v-model:open="openConfirmationDeleteDialog">
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>
+            Are you sure you want to delete this vehicle?
+          </DialogTitle>
+          <DialogDescription>
+            This action cannot be undone. Please confirm if you want to proceed
+          </DialogDescription>
+        </DialogHeader>
+        <div class="mt-8 flex justify-end space-x-4">
+          <Button
+            variant="outline"
+            @click="openConfirmationDeleteDialog = false"
+          >
+            Cancel
+          </Button>
+          <Button variant="destructive" @click="deleteVehicle(vehicle.id)">
+            Delete
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
   </AuthenticatedLayout>
 </template>

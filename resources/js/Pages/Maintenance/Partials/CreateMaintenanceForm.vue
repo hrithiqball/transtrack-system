@@ -18,7 +18,7 @@ import {
 } from '@/Components/ui/select';
 import { cn } from '@/lib/utils';
 import { User } from '@/types';
-import { useForm } from '@inertiajs/vue3';
+import { useForm, usePage } from '@inertiajs/vue3';
 import {
   DateFormatter,
   getLocalTimeZone,
@@ -53,6 +53,11 @@ const fetchPersonnel = async () => {
 
     const data = await response.json();
     personnelList.value = data;
+
+    if (usePage().props.auth.user.role === 'personnel') {
+      selectedPersonnelId.value = usePage().props.auth.user.id.toString();
+    }
+
     loading.value = false;
   } catch (error) {
     console.error('Error fetching user list', error);
@@ -87,6 +92,8 @@ const createMaintenance = () => {
     .replace('T', ' ');
 
   form.post(route('maintenance.store'));
+
+  toast.success('Maintenance created successfully');
 };
 </script>
 
@@ -123,7 +130,10 @@ const createMaintenance = () => {
 
       <div>
         <Label>Personnel</Label>
-        <Select v-model="selectedPersonnelId">
+        <Select
+          v-model="selectedPersonnelId"
+          :disabled="$page.props.auth.user.role === 'personnel'"
+        >
           <SelectTrigger>
             <SelectValue placeholder="Select maintenance personnel" />
           </SelectTrigger>

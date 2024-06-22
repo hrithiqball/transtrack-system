@@ -16,3 +16,7 @@ export function valueUpdater<T extends Updater<any>>(
       ? updateOrValue(ref.value)
       : updateOrValue;
 }
+
+export function refreshPage() {
+  window.location.reload();
+}

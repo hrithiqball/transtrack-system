@@ -15,7 +15,13 @@ import {
 import CreateMaintenanceForm from '@/Pages/Maintenance/Partials/CreateMaintenanceForm.vue';
 import { Vehicle } from '@/types/Vehicle';
 import { router } from '@inertiajs/vue3';
-import { MoreHorizontal } from 'lucide-vue-next';
+import {
+  MoreHorizontal,
+  NotebookTabs,
+  Wrench,
+  TrashIcon,
+  EditIcon,
+} from 'lucide-vue-next';
 import { ref } from 'vue';
 
 defineProps<{ vehicle: Vehicle }>();
@@ -59,10 +65,16 @@ const deleteVehicle = (id: number) => {
         "
         @click="openCreateMaintenanceDialog(vehicle.id)"
       >
-        Create Maintenance
+        <div class="flex items-center space-x-2">
+          <Wrench :size="18" />
+          <span> Create Maintenance </span>
+        </div>
       </DropdownMenuItem>
       <DropdownMenuItem @click="openDetails(vehicle.id)">
-        Details
+        <div class="flex items-center space-x-2">
+          <NotebookTabs :size="18" />
+          <span> Details </span>
+        </div>
       </DropdownMenuItem>
       <DropdownMenuItem
         v-if="
@@ -71,7 +83,10 @@ const deleteVehicle = (id: number) => {
         "
         @click="editVehicle(vehicle.id)"
       >
-        Edit
+        <div class="flex items-center space-x-2">
+          <EditIcon :size="18" />
+          <span> Edit </span>
+        </div>
       </DropdownMenuItem>
       <DropdownMenuItem
         v-if="
@@ -81,7 +96,10 @@ const deleteVehicle = (id: number) => {
         class="text-red-500"
         @click="deleteVehicle(vehicle.id)"
       >
-        Delete
+        <div class="flex items-center space-x-2">
+          <TrashIcon :size="18" />
+          <span> Delete </span>
+        </div>
       </DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>

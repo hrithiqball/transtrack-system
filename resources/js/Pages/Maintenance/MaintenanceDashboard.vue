@@ -4,6 +4,13 @@ import { Maintenance } from '@/types/Maintenance';
 import { Head, usePage } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import MaintenanceCard from './Partials/MaintenanceCard.vue';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/Components/ui/card';
 
 const maintenances = usePage().props.maintenances as Maintenance[];
 const pastMaintenance = ref<Maintenance[]>([]);
@@ -28,61 +35,72 @@ maintenances.forEach((maintenance) => {
   <Head title="Maintenance" />
 
   <AuthenticatedLayout>
-    <div class="m-4 flex flex-1 space-x-4">
-      <div
-        class="flex flex-1 flex-col space-y-4 rounded bg-white p-4 dark:bg-gray-800"
-      >
-        <h2 class="text-lg font-semibold underline underline-offset-4">
-          Previous Maintenance
-        </h2>
-        <MaintenanceCard
-          v-for="maintenance of pastMaintenance"
-          :key="maintenance.id"
-          :maintenance
-        />
-        <div
-          v-if="!pastMaintenance.length"
-          class="flex flex-1 items-center justify-center"
-        >
-          <p class="text-center">No maintenance recorded</p>
-        </div>
+    <template #header>
+      <div class="grid grid-cols-3 gap-4">
+        <Card class="flex flex-col">
+          <CardHeader>
+            <CardTitle> Previous Maintenance </CardTitle>
+            <CardDescription>
+              View all maintenance records that have been completed
+            </CardDescription>
+          </CardHeader>
+          <CardContent class="flex flex-1">
+            <MaintenanceCard
+              v-for="maintenance of pastMaintenance"
+              :key="maintenance.id"
+              :maintenance
+            />
+            <div
+              v-if="!pastMaintenance.length"
+              class="flex flex-1 items-center justify-center"
+            >
+              <p class="text-center">No maintenance records found</p>
+            </div>
+          </CardContent>
+        </Card>
+        <Card class="flex flex-col">
+          <CardHeader>
+            <CardTitle> Today Maintenance </CardTitle>
+            <CardDescription>
+              View all maintenance scheduled for today
+            </CardDescription>
+          </CardHeader>
+          <CardContent class="flex flex-1">
+            <MaintenanceCard
+              v-for="maintenance of todayMaintenance"
+              :key="maintenance.id"
+              :maintenance
+            />
+            <div
+              v-if="todayMaintenance.length === 0"
+              class="flex flex-1 items-center justify-center"
+            >
+              <p class="text-center">No maintenance scheduled for today</p>
+            </div>
+          </CardContent>
+        </Card>
+        <Card class="flex flex-col">
+          <CardHeader>
+            <CardTitle> Upcoming Maintenance </CardTitle>
+            <CardDescription>
+              View all maintenance scheduled for the future
+            </CardDescription>
+          </CardHeader>
+          <CardContent class="flex flex-1">
+            <MaintenanceCard
+              v-for="maintenance of upcomingMaintenance"
+              :key="maintenance.id"
+              :maintenance
+            />
+            <div
+              v-if="!upcomingMaintenance.length"
+              class="flex flex-1 items-center justify-center"
+            >
+              <p class="text-center">No upcoming maintenance scheduled</p>
+            </div>
+          </CardContent>
+        </Card>
       </div>
-      <div
-        class="flex flex-1 flex-col space-y-4 rounded bg-white p-4 dark:bg-gray-800"
-      >
-        <h2 class="text-lg font-semibold underline underline-offset-4">
-          Today Maintenance
-        </h2>
-        <MaintenanceCard
-          v-for="maintenance of todayMaintenance"
-          :key="maintenance.id"
-          :maintenance
-        />
-        <div
-          v-if="todayMaintenance.length === 0"
-          class="flex flex-1 items-center justify-center"
-        >
-          <p class="text-center">No maintenance scheduled for today</p>
-        </div>
-      </div>
-      <div
-        class="flex flex-1 flex-col space-y-4 rounded bg-white p-4 dark:bg-gray-800"
-      >
-        <h2 class="text-lg font-semibold underline underline-offset-4">
-          Upcoming Maintenance
-        </h2>
-        <MaintenanceCard
-          v-for="maintenance of upcomingMaintenance"
-          :key="maintenance.id"
-          :maintenance
-        />
-        <div
-          v-if="!upcomingMaintenance.length"
-          class="flex flex-1 items-center justify-center"
-        >
-          <p class="text-center">No upcoming maintenance scheduled</p>
-        </div>
-      </div>
-    </div>
+    </template>
   </AuthenticatedLayout>
 </template>

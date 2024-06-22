@@ -14,6 +14,7 @@ import { onMounted, ref } from 'vue';
 import AddVehicleForm from './Partials/AddVehicleForm.vue';
 import DataTable from './Partials/vehicle-table/VehicleTable.vue';
 import { columns } from './Partials/vehicle-table/vehicleColumn';
+import { BadgePlus } from 'lucide-vue-next';
 
 const vehicles = usePage().props.vehicles as Vehicle[];
 const data = ref<Vehicle[]>([]);
@@ -32,20 +33,21 @@ onMounted(() => {
 
   <AuthenticatedLayout>
     <template #header>
-      <div class="flex justify-between">
-        <h2
-          class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200"
-        >
-          Vehicle
-        </h2>
-        <Dialog
-          v-if="
-            $page.props.auth.user.role === 'admin' ||
-            $page.props.auth.user.role === 'manager'
-          "
-        >
+      <div
+        v-if="
+          $page.props.auth.user.role === 'admin' ||
+          $page.props.auth.user.role === 'manager'
+        "
+        class="flex justify-end"
+      >
+        <Dialog>
           <DialogTrigger as-child>
-            <Button variant="outline">Register Vehicle</Button>
+            <Button variant="outline">
+              <div class="flex items-center space-x-2">
+                <BadgePlus :size="18" />
+                <span> Register Vehicle </span>
+              </div>
+            </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>

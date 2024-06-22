@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { Card, CardContent, CardHeader, CardTitle } from '@/Components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/Components/ui/card';
 import { BarChart } from '@/Components/ui/chart-bar';
 import { DonutChart } from '@/Components/ui/chart-donut';
 import { Maintenance } from '@/types/Maintenance';
@@ -101,55 +107,60 @@ function getPersonnelPerformanceData() {
 </script>
 
 <template>
-  <Card class="mt-4 flex flex-col">
-    <CardHeader>
-      <CardTitle> Statistics </CardTitle>
-    </CardHeader>
-    <CardContent>
-      <div class="flex">
-        <div class="flex w-3/5 flex-col">
-          <span> Maintenance Completed </span>
-          <BarChart
-            index="name"
-            :data="barChartData"
-            :categories="['Total']"
-            :colors="['#6750a4']"
-            :y-formatter="
-              (tick) => {
-                return `${tick}`;
-              }
-            "
-          />
-        </div>
-        <div class="flex w-2/5 flex-col">
-          <span> Personnel Performance </span>
-          <div class="flex flex-1 items-center justify-center">
-            <DonutChart
-              index="name"
-              :category="'total'"
-              :data="pieChartData"
-              :type="'pie'"
-              :colors="[
-                '#1E90FF',
-                '#00BFFF',
-                '#4682B4',
-                '#87CEEB',
-                '#B0C4DE',
-                '#778899',
-                '#708090',
-                '#2F4F4F',
-                '#6A5ACD',
-                '#7B68EE',
-                '#8A2BE2',
-                '#9370DB',
-                '#BA55D3',
-                '#9400D3',
-                '#9932CC',
-              ]"
-            />
-          </div>
-        </div>
-      </div>
-    </CardContent>
-  </Card>
+  <div class="grid grid-cols-5 gap-4">
+    <Card class="col-span-3">
+      <CardHeader>
+        <CardTitle> Maintenance Record </CardTitle>
+        <CardDescription>
+          Maintenance record for the past 6 months
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <BarChart
+          index="name"
+          :data="barChartData"
+          :categories="['Total']"
+          :colors="['#6750a4']"
+          :y-formatter="
+            (tick) => {
+              return `${tick}`;
+            }
+          "
+        />
+      </CardContent>
+    </Card>
+    <Card class="col-span-2 flex flex-col">
+      <CardHeader>
+        <CardTitle> Personnel Performance </CardTitle>
+        <CardDescription>
+          Performance of personnel handling maintenance to vehicle
+        </CardDescription>
+      </CardHeader>
+      <CardContent class="flex flex-1 flex-col items-center justify-center">
+        <DonutChart
+          index="name"
+          :category="'total'"
+          :data="pieChartData"
+          :type="'pie'"
+          :colors="[
+            '#1E90FF',
+            '#00BFFF',
+            '#4682B4',
+            '#87CEEB',
+            '#B0C4DE',
+            '#778899',
+            '#708090',
+            '#2F4F4F',
+            '#6A5ACD',
+            '#7B68EE',
+            '#8A2BE2',
+            '#9370DB',
+            '#BA55D3',
+            '#9400D3',
+            '#9932CC',
+          ]"
+        />
+      </CardContent>
+    </Card>
+  </div>
 </template>

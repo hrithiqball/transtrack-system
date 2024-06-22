@@ -26,9 +26,15 @@ import {
 } from '@internationalized/date';
 import { Calendar as CalendarIcon } from 'lucide-vue-next';
 import type { DateRange } from 'radix-vue';
-import { Ref, ref } from 'vue';
+import { Ref, onMounted, ref } from 'vue';
 
 const props = defineProps<{ vehicleId?: number; vehicles: Vehicle[] }>();
+
+onMounted(() => {
+  if (props.vehicleId) {
+    selectedVehicleId.value = props.vehicleId.toString();
+  }
+});
 
 const df = new DateFormatter('en-MY', {
   dateStyle: 'long',
@@ -121,7 +127,7 @@ const createBooking = () => {
       <div>
         <Label for="vehicleId">Vehicle</Label>
       </div>
-      <Select v-model="selectedVehicleId">
+      <Select v-model="selectedVehicleId" :disabled="vehicleId !== undefined">
         <SelectTrigger>
           <SelectValue placeholder="Select a vehicle" />
         </SelectTrigger>

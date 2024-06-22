@@ -26,7 +26,8 @@ class Maintenance extends Model
             'maintenanceDate' => $this->maintenance_date,
             'vehicle' => $this->vehicle->vehicleWoMaintenanceDto(),
             'servicedBy' => $this->servicedBy->userDto(),
-            'remarks' => $this->remarks
+            'remarks' => $this->remarks,
+            'completed' => $this->completed,
         ];
     }
 
@@ -34,6 +35,7 @@ class Maintenance extends Model
         'maintenance_date',
         'serviced_by',
         'vehicle_id',
-        'remarks'
+        'remarks',
+        'completed',
     ];
 }
