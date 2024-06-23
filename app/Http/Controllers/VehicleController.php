@@ -54,7 +54,7 @@ class VehicleController extends Controller
         return Redirect::route('vehicle.view');
     }
 
-    public function destroy(int $id)
+    public function destroy(int $id): RedirectResponse
     {
         $vehicle = Vehicle::findOrFail($id);
         $vehicle->delete();

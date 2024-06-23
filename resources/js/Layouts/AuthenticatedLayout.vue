@@ -15,7 +15,7 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
-  <Toaster :richColors="true" />
+  <Toaster :rich-colors="true" />
   <div>
     <div class="flex min-h-screen flex-col bg-gray-100 dark:bg-gray-900">
       <nav

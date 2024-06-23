@@ -101,7 +101,7 @@ const handleOpenCreateMaintenance = () => {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Create Maintenance</DialogTitle>
-            <CreateMaintenanceForm :vehicleId />
+            <CreateMaintenanceForm :vehicle-id />
           </DialogHeader>
         </DialogContent>
       </Dialog>

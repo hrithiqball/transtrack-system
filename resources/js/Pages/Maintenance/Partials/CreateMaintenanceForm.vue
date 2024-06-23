@@ -44,7 +44,14 @@ onMounted(() => {
   fetchPersonnel();
 });
 
-const fetchPersonnel = async () => {
+const form = useForm({
+  vehicle_id: '',
+  maintenance_date: '',
+  serviced_by: '',
+  remarks: '',
+});
+
+async function fetchPersonnel() {
   try {
     const response = await fetch(route('user.list', { role: 'personnel' }));
     if (!response.ok) {
@@ -62,16 +69,9 @@ const fetchPersonnel = async () => {
   } catch (error) {
     console.error('Error fetching user list', error);
   }
-};
+}
 
-const form = useForm({
-  vehicle_id: '',
-  maintenance_date: '',
-  serviced_by: '',
-  remarks: '',
-});
-
-const createMaintenance = () => {
+function createMaintenance() {
   form.vehicle_id = vehicleId.value.toString();
 
   if (!maintenanceDateInput.value) {
@@ -94,7 +94,7 @@ const createMaintenance = () => {
   form.post(route('maintenance.store'));
 
   toast.success('Maintenance created successfully');
-};
+}
 </script>
 
 <template>

@@ -74,17 +74,17 @@ function handleDeleteMaintenance() {
           <div class="flex">
             <div
               v-if="maintenance.completed"
-              class="flex items-center space-x-2 rounded-sm bg-green-500 px-2 text-white"
+              class="flex items-center space-x-2 rounded-sm bg-green-500 px-2 py-1 text-sm text-white"
             >
-              <CheckIcon :size="18" />
-              <span> Maintenance is completed </span>
+              <CheckIcon :size="14" />
+              <span class="pr-1"> Maintenance is completed </span>
             </div>
             <div
               v-else
-              class="flex items-center space-x-2 rounded-lg bg-red-500 px-2 text-white"
+              class="flex items-center space-x-2 rounded-sm bg-red-500 px-2 py-1 text-sm text-white"
             >
-              <Ban :size="18" />
-              <span> Maintenance is not yet completed </span>
+              <Ban :size="14" />
+              <span class="pr-1"> Maintenance is not yet completed </span>
             </div>
           </div>
           <div
@@ -139,7 +139,7 @@ function handleDeleteMaintenance() {
         </div>
       </div>
 
-      <div class="grid grid-cols-2 gap-4">
+      <div class="mt-4 grid grid-cols-2 gap-4">
         <Card class="col-span-2">
           <CardHeader>
             <CardTitle> Remarks </CardTitle>
@@ -149,7 +149,7 @@ function handleDeleteMaintenance() {
           </CardHeader>
         </Card>
         <VehicleInfoCard :vehicle="maintenance.vehicle" />
-        <ServicedByInfoCard :servicedBy="maintenance.servicedBy" />
+        <ServicedByInfoCard :serviced-by="maintenance.servicedBy" />
       </div>
     </template>
   </AuthenticatedLayout>

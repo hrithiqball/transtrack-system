@@ -36,7 +36,7 @@ watch(isDark, (newVal) => {
     <CardContent>
       <div class="flex min-h-60 flex-1 items-center justify-center rounded-lg">
         <GoogleMap
-          :apiKey
+          :api-key
           :styles
           :zoom
           :center="{ lat, lng }"

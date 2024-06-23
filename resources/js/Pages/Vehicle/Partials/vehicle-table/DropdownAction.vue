@@ -107,7 +107,7 @@ const deleteVehicle = (id: number) => {
     <DialogContent>
       <DialogHeader aria-describedby="Maintenance form">
         <DialogTitle>Create Maintenance</DialogTitle>
-        <CreateMaintenanceForm :vehicleId />
+        <CreateMaintenanceForm :vehicle-id />
       </DialogHeader>
     </DialogContent>
   </Dialog>

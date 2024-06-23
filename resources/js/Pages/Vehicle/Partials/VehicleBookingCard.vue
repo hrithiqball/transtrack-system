@@ -110,7 +110,7 @@ function openDetails(booking: Booking) {
             <DialogDescription>
               Book vehicle for usage of this vehicle
             </DialogDescription>
-            <BookVehicleForm :vehicles :vehicleId="vehicle.id" />
+            <BookVehicleForm :vehicles :vehicle-id="vehicle.id" />
           </DialogHeader>
         </DialogContent>
       </Dialog>

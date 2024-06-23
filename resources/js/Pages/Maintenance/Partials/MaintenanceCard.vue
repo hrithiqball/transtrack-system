@@ -47,17 +47,17 @@ const handleMaintenanceInfo = (id: number) => {
         <div class="flex">
           <div
             v-if="maintenance.completed"
-            class="flex items-center space-x-1 rounded-lg bg-green-500 px-2 py-1 text-white"
+            class="flex items-center space-x-1 rounded-sm bg-green-500 px-2 py-1 text-white"
           >
             <Check :size="15" />
-            <span class="text-sm"> Maintenance is completed </span>
+            <span class="pr-1 text-sm"> Maintenance is completed </span>
           </div>
           <div
             v-else
-            class="flex items-center space-x-1 rounded-lg bg-red-500 px-2 py-1 text-white"
+            class="flex items-center space-x-1 rounded-sm bg-red-500 px-2 py-1 text-white"
           >
             <Ban :size="15" />
-            <span class="text-sm"> Maintenance is not completed </span>
+            <span class="pr-1 text-sm"> Maintenance is not completed </span>
           </div>
         </div>
         <div class="flex">

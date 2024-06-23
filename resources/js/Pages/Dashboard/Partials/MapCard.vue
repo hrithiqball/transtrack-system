@@ -68,7 +68,7 @@ const markerList = vehicles.map((vehicle) => ({
         >
           <InfoWindow>
             <VehicleInfoMessage
-              :plateNumber="marker.vehicle.plateNumber"
+              :plate-number="marker.vehicle.plateNumber"
               :brand="marker.vehicle.brand"
               :model="marker.vehicle.model"
               :color="marker.vehicle.color"

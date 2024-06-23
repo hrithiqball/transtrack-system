@@ -81,7 +81,7 @@ function deleteVehicle(id: number) {
             <VehicleMaintenanceCard
               class="col-span-3"
               :maintenances="vehicle.maintenances"
-              :vehicleId="vehicle.id"
+              :vehicle-id="vehicle.id"
             />
             <VehicleBookingCard
               class="col-span-3"

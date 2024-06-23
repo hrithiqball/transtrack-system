@@ -44,7 +44,7 @@ const approveBooking = () => {
     status: 'Approved',
   });
 
-  form.put(route('booking.update', { booking: currentBooking.value }), {
+  form.put(route('booking.update', { id: currentBooking.value?.id }), {
     preserveScroll: true,
     onSuccess: () => {
       form.reset();
@@ -62,7 +62,7 @@ const rejectBooking = () => {
     status: 'Rejected',
   });
 
-  form.put(route('booking.update', { booking: currentBooking.value }), {
+  form.put(route('booking.update', { id: currentBooking.value?.id }), {
     preserveScroll: true,
     onSuccess: () => {
       form.reset();

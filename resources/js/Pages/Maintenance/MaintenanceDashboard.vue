@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/Components/ui/card';
+import { XIcon } from 'lucide-vue-next';
 
 const maintenances = usePage().props.maintenances as Maintenance[];
 const pastMaintenance = ref<Maintenance[]>([]);
@@ -44,7 +45,7 @@ maintenances.forEach((maintenance) => {
               View all maintenance records that have been completed
             </CardDescription>
           </CardHeader>
-          <CardContent class="flex flex-1">
+          <CardContent class="flex flex-col space-y-2">
             <MaintenanceCard
               v-for="maintenance of pastMaintenance"
               :key="maintenance.id"
@@ -52,9 +53,12 @@ maintenances.forEach((maintenance) => {
             />
             <div
               v-if="!pastMaintenance.length"
-              class="flex flex-1 items-center justify-center"
+              class="flex min-h-52 flex-1 items-center justify-center"
             >
-              <p class="text-center">No maintenance records found</p>
+              <div class="flex items-center space-x-2">
+                <XIcon :size="18" class="text-red-500" />
+                <span> No maintenance records found </span>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -65,7 +69,7 @@ maintenances.forEach((maintenance) => {
               View all maintenance scheduled for today
             </CardDescription>
           </CardHeader>
-          <CardContent class="flex flex-1">
+          <CardContent class="flex flex-col space-y-2">
             <MaintenanceCard
               v-for="maintenance of todayMaintenance"
               :key="maintenance.id"
@@ -73,9 +77,12 @@ maintenances.forEach((maintenance) => {
             />
             <div
               v-if="todayMaintenance.length === 0"
-              class="flex flex-1 items-center justify-center"
+              class="flex min-h-52 flex-1 items-center justify-center"
             >
-              <p class="text-center">No maintenance scheduled for today</p>
+              <div class="flex items-center space-x-2">
+                <XIcon :size="18" class="text-red-500" />
+                <span> No maintenance scheduled for today </span>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -86,7 +93,7 @@ maintenances.forEach((maintenance) => {
               View all maintenance scheduled for the future
             </CardDescription>
           </CardHeader>
-          <CardContent class="flex flex-1">
+          <CardContent class="flex flex-col space-y-2">
             <MaintenanceCard
               v-for="maintenance of upcomingMaintenance"
               :key="maintenance.id"
@@ -94,9 +101,12 @@ maintenances.forEach((maintenance) => {
             />
             <div
               v-if="!upcomingMaintenance.length"
-              class="flex flex-1 items-center justify-center"
+              class="flex min-h-52 flex-1 items-center justify-center"
             >
-              <p class="text-center">No upcoming maintenance scheduled</p>
+              <div class="flex items-center space-x-2">
+                <XIcon :size="18" class="text-red-500" />
+                <span> No upcoming maintenance scheduled </span>
+              </div>
             </div>
           </CardContent>
         </Card>

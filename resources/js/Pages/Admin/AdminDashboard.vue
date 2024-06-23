@@ -22,10 +22,12 @@ import {
   TableHead,
 } from '@/Components/ui/table';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { refreshPage } from '@/lib/utils';
 import { User } from '@/types';
 import { Head, router, usePage } from '@inertiajs/vue3';
 import { MoreHorizontal } from 'lucide-vue-next';
 import { onMounted, ref } from 'vue';
+import { toast } from 'vue-sonner';
 
 const users = usePage().props.users as User[];
 const usersRef = ref<User[]>([]);
@@ -36,8 +38,12 @@ onMounted(() => {
   );
 });
 
-const changeRole = (id: number, role: string) => {
-  router.put(route('admin.update-role', { id, role }));
+const changeRole = (user: User, role: string) => {
+  router.put(route('admin.update-role', { id: user.id, role }));
+  toast.success(
+    `User ${user.name} role has been updated to ${role.toUpperCase()}`,
+  );
+  refreshPage();
 };
 </script>
 
@@ -79,22 +85,22 @@ const changeRole = (id: number, role: string) => {
                           </DropdownMenuTrigger>
                           <DropdownMenuContent>
                             <DropdownMenuItem
-                              @click="changeRole(user.id, 'personnel')"
+                              @click="changeRole(user, 'personnel')"
                             >
                               Personnel
                             </DropdownMenuItem>
                             <DropdownMenuItem
-                              @click="changeRole(user.id, 'admin')"
+                              @click="changeRole(user, 'admin')"
                             >
                               Admin
                             </DropdownMenuItem>
                             <DropdownMenuItem
-                              @click="changeRole(user.id, 'manager')"
+                              @click="changeRole(user, 'manager')"
                             >
                               Fleet Manager
                             </DropdownMenuItem>
                             <DropdownMenuItem
-                              @click="changeRole(user.id, 'driver')"
+                              @click="changeRole(user, 'driver')"
                             >
                               Driver
                             </DropdownMenuItem>

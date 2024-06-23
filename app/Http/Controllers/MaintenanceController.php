@@ -22,7 +22,7 @@ class MaintenanceController extends Controller
         ]);
     }
 
-    public function detail(int $id)
+    public function detail(int $id): Response
     {
         $maintenance = Maintenance::with(['vehicle', 'servicedBy'])->findOrFail($id);
 

@@ -18,7 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'view'])->name('dashboard');
 
     Route::get('/admin', [ProfileController::class, 'admin'])->name('admin.index')->middleware(AdminMiddleware::class);
-    Route::put('/admin/role/{id}', [ProfileController::class, 'update_role'])->name('admin.update-role');
+    Route::put('/admin/role/{id}', [ProfileController::class, 'update_role'])->name('admin.update-role')->middleware(AdminMiddleware::class);
 
     Route::get('/profile/{id}', [ProfileController::class, 'detail'])->name('profile.detail');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/booking', [BookingController::class, 'view'])->name('booking.view');
     Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
-    Route::put('/booking/{booking}', [BookingController::class, 'update'])->name('booking.update');
+    Route::put('/booking/{id}', [BookingController::class, 'update'])->name('booking.update');
 
     Route::get('/maintenance', [MaintenanceController::class, 'view'])->name('maintenance.view');
     Route::get('/maintenance/{id}', [MaintenanceController::class, 'detail'])->name('maintenance.detail');

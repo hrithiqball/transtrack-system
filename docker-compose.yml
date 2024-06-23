@@ -1,0 +1,47 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_app
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - laravel
+
+  webserver:
+    image: nginx:alpine
+    container_name: laravel_webserver
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - '8000:80'
+    networks:
+      - laravel
+
+  # db:
+  #   image: mysql:8.0.37
+  #   container_name: laravel_db
+  #   restart: unless-stopped
+  #   environment:
+  #     MYSQL_DATABASE: transtrack_system
+  #     MYSQL_ROOT_PASSWORD: root
+  #     MYSQL_PASSWORD: secret
+  #     MYSQL_USER: laravel
+  #   ports:
+  #     - '3306:3306'
+  #   volumes:
+  #     - dbdata:/var/lib/mysql
+  #   networks:
+  #     - laravel
+
+networks:
+  laravel:
+    driver: bridge
+
+volumes:
+  dbdata:

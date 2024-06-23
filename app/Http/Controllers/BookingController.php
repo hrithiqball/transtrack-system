@@ -29,7 +29,7 @@ class BookingController extends Controller
         return Redirect::route('booking.view');
     }
 
-    public function update(UpdateBookingRequest $request, int $id)
+    public function update(UpdateBookingRequest $request, int $id) : RedirectResponse
     {
         $booking = Booking::find($id);
         $booking->update($request->validated());
