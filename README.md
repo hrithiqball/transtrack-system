@@ -24,31 +24,13 @@
 
 This project is to fulfill the requirements of course CSC577 - SOFTWARE ENGINEERING: THEORIES AND PRINCIPLES. The project is about transportation management system using Laravel framework.
 
-### Requirements
-
-- [x] Login/Logout
-
-Allow user to login and logout from the web application using session management.
-
-- [x] Registration
-
-Allow new user to register to the web system.
-
-- [x] Information management: Create / Read / Update / Delete
-
-Allow user to manage information from a database such as to create, read, update and delete information from the database.
-
-- [x] Dashboard
-
-To provide user an overview of the process or information by different data representations.
-
-### Prerequisites
+# Prerequisites
 
 1. [XAMPP](https://www.apachefriends.org/index.html). Make sure to install MySQL server as well during the installation.
 2. [Composer](https://getcomposer.org/download/)
 3. [NodeJs](https://nodejs.org/en)
 
-### Installation
+# Installation
 
 1. Install PHP dependencies for backend
 
@@ -76,7 +58,19 @@ php artisan migrate
 php artisan key:generate
 ```
 
-7. Run the application using 2 terminals
+7. Seed the database
+
+```bash
+php artisan db:seed
+```
+
+8. To link storage with file system
+
+```bash
+php artisan storage:link
+```
+
+9. Run the application using 2 terminals
 
 ```bash
 # Terminal 1
@@ -86,32 +80,12 @@ php artisan serve
 npm run dev
 ```
 
+# Source Control
 ## To update to latest version of the system
 
 ```bash
 git pull
-```
-
-```bash
 npm i
-```
-
-```bash
 composer install
-```
-
-```bash
 php artisan migrate
-```
-
-## To seed database with admin role
-
-```bash
-php artisan db:seed
-```
-
-## To link storage with file system
-
-```bash
-php artisan storage:link
 ```
