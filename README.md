@@ -26,9 +26,10 @@ This project is to fulfill the requirements of course CSC577 - SOFTWARE ENGINEER
 
 # Prerequisites
 
-1. [XAMPP](https://www.apachefriends.org/index.html). Make sure to install MySQL server as well during the installation.
+1. [XAMPP](https://www.apachefriends.org/index.html) - Make sure to install MySQL server as well during the installation.
 2. [Composer](https://getcomposer.org/download/)
 3. [NodeJs](https://nodejs.org/en)
+4. [Git](https://git-scm.com/downloads) - Watch Youtube in case you are unfamiliar with the git
 
 # Installation
 
