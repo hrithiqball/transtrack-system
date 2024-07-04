@@ -50,6 +50,20 @@ function deleteVehicle(id: number) {
           </div>
         </div>
         <div class="flex items-center space-x-2">
+          <Link
+            v-if="
+              $page.props.auth.user.role === 'admin' ||
+              $page.props.auth.user.role === 'manager'
+            "
+            :href="route('vehicle.edit', { id: vehicle.id })"
+          >
+            <Button variant="outline">
+              <div class="flex items-center space-x-2">
+                <EditIcon :size="15" />
+                <span> Edit </span>
+              </div>
+            </Button>
+          </Link>
           <Button variant="destructive" @click="openConfirmationDelete()">
             <div class="flex items-center space-x-2">
               <TrashIcon :size="15" />

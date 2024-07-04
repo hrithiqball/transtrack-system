@@ -45,6 +45,15 @@ class VehicleController extends Controller
         return Redirect::route('vehicle.view');
     }
 
+    public function edit(int $id)
+    {
+        $vehicle = Vehicle::find($id);
+
+        return Inertia::render('Vehicle/VehicleUpdate', [
+            'vehicle' => $vehicle->vehicleDto(),
+        ]);
+    }
+
     public function destroy(int $id): RedirectResponse
     {
         $vehicle = Vehicle::findOrFail($id);

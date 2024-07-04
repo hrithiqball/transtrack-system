@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/vehicle', [VehicleController::class, 'view'])->name('vehicle.view');
     Route::get('/vehicle/{id}', [VehicleController::class, 'detail'])->name('vehicle.detail');
     Route::post('/vehicle', [VehicleController::class, 'store'])->name('vehicle.store');
+    Route::get('/vehicle/{id}/edit', [VehicleController::class, 'edit'])->name('vehicle.edit');
     Route::put('/vehicle/{id}', [VehicleController::class, 'update'])->name('vehicle.update');
     Route::delete('/vehicle/{id}', [VehicleController::class, 'destroy'])->name('vehicle.destroy');
 

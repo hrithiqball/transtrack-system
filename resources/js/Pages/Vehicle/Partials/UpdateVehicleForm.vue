@@ -63,19 +63,24 @@ const updateVehicle = () => {
           required
           autofocus
           autocomplete="plate-number"
-          class="mt-1 block w-full"
+          class="mt-1 block w-full dark:bg-input"
         />
         <InputError :message="form.errors.plate_number" class="mt-2" />
       </div>
 
       <div>
         <Label for="color">Color</Label>
-        <Input id="color" v-model="form.color" type="color" />
+        <Input
+          id="color"
+          v-model="form.color"
+          type="color"
+          class="dark:bg-input"
+        />
       </div>
 
       <div>
         <Label for="status">Status</Label>
-        <Select v-model="form.status">
+        <Select v-model="form.status" class="dark:bg-input">
           <SelectTrigger>
             <SelectValue placeholder="Vehicle Status" />
           </SelectTrigger>
