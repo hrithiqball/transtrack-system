@@ -38,7 +38,6 @@ const user = usePage().props.user as User;
             </div>
             <div class="flex items-center space-x-2">
               <BriefcaseBusiness v-if="user.role === 'manager'" :size="18" />
-              <Shield v-else-if="user.role === 'admin'" :size="18" />
               <CircleGauge v-else-if="user.role === 'driver'" :size="18" />
               <UserIcon v-else-if="user.role === 'personnel'" :size="18" />
               <CircleHelp v-else :size="18" />

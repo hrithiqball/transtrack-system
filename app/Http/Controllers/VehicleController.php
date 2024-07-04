@@ -30,15 +30,6 @@ class VehicleController extends Controller
         ]);
     }
 
-    public function edit(int $id)
-    {
-        $vehicle = Vehicle::find($id);
-
-        return Inertia::render('Vehicle/VehicleUpdate', [
-            'vehicle' => $vehicle->vehicleDto(),
-        ]);
-    }
-
     public function store(CreateVehicleRequest $request): RedirectResponse
     {
         Vehicle::create($request->validatedWithPhoto());

@@ -47,7 +47,7 @@ const handleOpenCreateMaintenance = () => {
         <Button
           v-if="
             $page.props.auth.user.role === 'personnel' ||
-            $page.props.auth.user.role === 'admin'
+            $page.props.auth.user.role === 'manager'
           "
           variant="outline"
           class="flex items-center space-x-1"

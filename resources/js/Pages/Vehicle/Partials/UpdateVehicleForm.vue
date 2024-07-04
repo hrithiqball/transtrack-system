@@ -18,21 +18,17 @@ import { toast } from 'vue-sonner';
 
 const vehicle = usePage().props.vehicle as Vehicle;
 const plateNumberInput = ref<HTMLInputElement | null>(null);
-const imageFile = ref<File | null>(null);
-const previewUrl = ref<string | null>(null);
 
 const form: InertiaForm<{
   plate_number: string;
   color: string;
   status: string;
-  photo: string;
   latitude: number;
   longitude: number;
 }> = useForm({
   plate_number: vehicle.plateNumber,
   color: vehicle.color,
   status: vehicle.status ?? 'na',
-  photo: vehicle.photo,
   latitude: vehicle.latitude,
   longitude: vehicle.longitude,
 });
@@ -52,29 +48,6 @@ const updateVehicle = () => {
       }
     },
   });
-};
-
-const previewImage = (event: Event) => {
-  if (!event.target) {
-    return;
-  }
-
-  const fileInput = event.target as HTMLInputElement;
-  const file = fileInput.files?.[0];
-
-  if (!file) {
-    return;
-  }
-
-  imageFile.value = file;
-  const reader = new FileReader();
-
-  reader.onload = (e) => {
-    previewUrl.value = e.target?.result as string;
-    fileInput.value = '';
-  };
-
-  reader.readAsDataURL(file);
 };
 </script>
 
@@ -116,26 +89,6 @@ const previewImage = (event: Event) => {
             </SelectGroup>
           </SelectContent>
         </Select>
-      </div>
-
-      <div>
-        <Label for="photo">Photo</Label>
-        <template v-if="previewUrl">
-          <img :src="previewUrl" width="200" height="200" />
-        </template>
-        <img
-          v-else
-          :src="`/storage/${vehicle.photo}`"
-          width="200"
-          height="200"
-        />
-        <Input
-          id="photo"
-          type="file"
-          placeholder="Vehicle Image"
-          accept=".png, .jpg"
-          @change="previewImage"
-        />
       </div>
 
       <div class="flex items-center gap-4">

@@ -38,10 +38,6 @@ const openDetails = (id: number) => {
   router.visit(route('vehicle.detail', { id }));
 };
 
-const editVehicle = (id: number) => {
-  router.visit(route('vehicle.edit', { id }));
-};
-
 const deleteVehicle = (id: number) => {
   if (confirm('Are you sure you want to delete this vehicle?')) {
     router.delete(route('vehicle.destroy', { id }));
@@ -60,7 +56,7 @@ const deleteVehicle = (id: number) => {
     <DropdownMenuContent align="end">
       <DropdownMenuItem
         v-if="
-          $page.props.auth.user.role === 'admin' ||
+          $page.props.auth.user.role === 'manager' ||
           $page.props.auth.user.role === 'personnel'
         "
         @click="openCreateMaintenanceDialog(vehicle.id)"
@@ -77,22 +73,7 @@ const deleteVehicle = (id: number) => {
         </div>
       </DropdownMenuItem>
       <DropdownMenuItem
-        v-if="
-          $page.props.auth.user.role === 'admin' ||
-          $page.props.auth.user.role === 'manager'
-        "
-        @click="editVehicle(vehicle.id)"
-      >
-        <div class="flex items-center space-x-2">
-          <EditIcon :size="18" />
-          <span> Edit </span>
-        </div>
-      </DropdownMenuItem>
-      <DropdownMenuItem
-        v-if="
-          $page.props.auth.user.role === 'admin' ||
-          $page.props.auth.user.role === 'manager'
-        "
+        v-if="$page.props.auth.user.role === 'manager'"
         class="text-red-500"
         @click="deleteVehicle(vehicle.id)"
       >

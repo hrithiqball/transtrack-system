@@ -34,7 +34,7 @@ const usersRef = ref<User[]>([]);
 
 onMounted(() => {
   usersRef.value = users.filter(
-    (user) => user.email !== 'admin@transtrack.com',
+    (user) => user.email !== 'manager@transtrack.com',
   );
 });
 
@@ -88,11 +88,6 @@ const changeRole = (user: User, role: string) => {
                               @click="changeRole(user, 'personnel')"
                             >
                               Personnel
-                            </DropdownMenuItem>
-                            <DropdownMenuItem
-                              @click="changeRole(user, 'admin')"
-                            >
-                              Admin
                             </DropdownMenuItem>
                             <DropdownMenuItem
                               @click="changeRole(user, 'manager')"

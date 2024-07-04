@@ -46,10 +46,7 @@ const vehicles = usePage().props.vehicles as Vehicle[];
           </Dialog>
         </div>
         <div
-          v-if="
-            $page.props.auth.user.role === 'admin' ||
-            $page.props.auth.user.role === 'manager'
-          "
+          v-if="$page.props.auth.user.role === 'manager'"
           class="mt-4 flex items-center justify-center"
         >
           <Tabs default-value="general" class="w-full">

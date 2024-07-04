@@ -34,10 +34,7 @@ onMounted(() => {
   <AuthenticatedLayout>
     <template #header>
       <div
-        v-if="
-          $page.props.auth.user.role === 'admin' ||
-          $page.props.auth.user.role === 'manager'
-        "
+        v-if="$page.props.auth.user.role === 'manager'"
         class="flex justify-end"
       >
         <Dialog>

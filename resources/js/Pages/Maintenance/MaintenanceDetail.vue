@@ -89,7 +89,7 @@ function handleDeleteMaintenance() {
           </div>
           <div
             v-if="
-              $page.props.auth.user.role === 'admin' ||
+              $page.props.auth.user.role === 'manager' ||
               $page.props.auth.user.role === 'personnel'
             "
             class="flex items-center space-x-2"
