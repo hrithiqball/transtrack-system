@@ -58,7 +58,13 @@ const markerList = vehicles.map((vehicle) => ({
       <CardDescription> View vehicle locations here. </CardDescription>
     </CardHeader>
     <CardContent>
-      <GoogleMap :api-key :styles :center :zoom class="h-[500px] w-full">
+      <GoogleMap
+        :api-key="apiKey"
+        :styles
+        :center
+        :zoom
+        class="h-[500px] w-full"
+      >
         <Marker
           v-for="marker of markerList"
           :key="marker.id"
